@@ -1,0 +1,11 @@
+<h2>Galleries {{path}}</h2>
+
+<ul class="nav nav-tabs">
+	<li ng-repeat="item in navbarTabs" role="presentation" ng-class="{active: navbarTabsCurrent==item.state}">
+		<a ui-sref="{{item.state}}({ path: path })" ui-sref-opts="{reload: true}">{{item.label}}</a>
+	</li>
+</ul>
+
+<div>
+	<div ui-view></div>
+</div>

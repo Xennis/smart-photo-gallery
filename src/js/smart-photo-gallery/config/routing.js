@@ -8,7 +8,7 @@
  */
 function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
 	// Default route
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/galleries/');
 
 	/*
 	 * https://github.com/angular-ui/ui-router/issues/1119
@@ -28,9 +28,20 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 	// Set up the state
 	$stateProvider
 	.state('main', {
-		url: '/{path:nonURIEncoded}',
-		template: require('../view/page/home.html'),
-		controller: require('../controller/page/HomeController')
+		template: require('../view/state/main.html'),
+		controller: require('../controller/state/MainController')
+	})
+	.state('galleries', {
+		parent: 'main',
+		url: '/galleries/{path:nonURIEncoded}',
+		template: require('../view/state/main/galleries.html'),
+		controller: require('../controller/state/main/GalleriesController')		
+	})
+	.state('addGallery', {
+		parent: 'main',
+		url: '/addGallery/{path:nonURIEncoded}',
+		template: require('../view/state/main/addGallery.html'),
+		controller: require('../controller/state/main/AddGalleryController')	
 	})
 	;		
 }
