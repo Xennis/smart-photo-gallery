@@ -7,6 +7,8 @@ function GalleriesController($scope, $state, Restangular, $http) {
 			path: path
 		}).then(function(galleries) {
 			$scope.galleries = galleries;
+		}, function() {
+			console.warn('Request failed');
 		});
 	};
 

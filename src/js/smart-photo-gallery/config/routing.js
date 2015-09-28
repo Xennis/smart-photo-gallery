@@ -49,6 +49,12 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 		template: require('../view/state/main/addGallery.html'),
 		controller: require('../controller/state/main/AddGalleryController')	
 	})
+	.state('editGallery', {
+		parent: 'main',
+		url: '/editGallery/{path:nonURIEncoded}',
+		template: require('../view/state/main/editGallery.html'),
+		controller: require('../controller/state/main/EditGalleryController')	
+	})
 	;		
 }
 

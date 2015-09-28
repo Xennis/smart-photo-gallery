@@ -19,9 +19,9 @@ class WPLDK_Database_Model {
 		return $this;
 	}
 
-	public function get($id, $output_type = self::OUTPUT_TYPE_OBJECT) {
+	public function get($whereCondition, $output_type = self::OUTPUT_TYPE_OBJECT) {
 		global $wpdb;
-		return $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE `id` = '{$id}'", $output_type);
+		return $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE ".$whereCondition, $output_type);
 	}
 	
 	public function getMultiple($whereCondition = NULL, $orderBy = NULL) {

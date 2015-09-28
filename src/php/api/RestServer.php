@@ -60,14 +60,16 @@ class SPG_Api_RestServer {
 					case 'GET':
 						$response->setBody($model->getItem($id));
 						break;
-					case 'POST':
-						$response->setStatus($model->postItem($request->getBody(), $id));
+					case 'PUT':
+						$response->setStatus($model->putItem($request->getBody(), $id));
 						break;
 					case 'DELETE':
 						$response->setStatus($model->deleteItem($id));
 						break;
-				}
-				
+				}	
+			}
+			elseif ($id === 'x') {
+				$response->setBody($model->getItemByCondition($request->getParam('path')));
 			}
 		}
 		

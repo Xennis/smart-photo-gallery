@@ -20,21 +20,29 @@ class SPG_Api_Model_Galleries {
 	}
 	
 	public function getItem($id) {
-		return $this->model->get($id);
+		return $this->model->get("`id` = '{$id}'");
 	}
 	
-	public function postItem(array $data, $id=null) {
-		if ($id) {
-			$result = $this->model->update($data, $id);
-		} else {
-			echo "a)";
-			$result = $this->model->insert($data);			
-		}
+	public function getItemByCondition($file) {
+		return $this->model->get("`file` LIKE '{$file}'");		
+	}
+	
+	public function postItem(array $data) {
+		$result = $this->model->insert($data);			
 		if ($result === false) {
 			return SPG_Api_RestServer::HTTP_STATUS_400_BAD_REQUEST;
 		} else {
 			return SPG_Api_RestServer::HTTP_STATUS_201_CREATED;
 		}
+	}
+	
+	public function putItem(array $data, $id) {
+		$result = $this->model->update($data, $id);
+		if ($result === false) {
+			return SPG_Api_RestServer::HTTP_STATUS_400_BAD_REQUEST;
+		} else {
+			return SPG_Api_RestServer::HTTP_STATUS_200_OK;
+		}		
 	}
 	
 	public function deleteItem($id) {
