@@ -3,6 +3,7 @@
 ###########
 
 dist/
+*.lock
 
 # Bower, Node and Composer directories
 bower_components/

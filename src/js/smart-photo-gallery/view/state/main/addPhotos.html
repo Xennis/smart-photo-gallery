@@ -4,5 +4,5 @@
 			<input name="file" type="file" multiple /> 
 		</div>
 	</form>
-	<p class="max-upload-size">Maximum upload file size: 10MB</p>
+	<p class="max-upload-size"><?php printf( __( 'Maximum upload file size: %s.' ), esc_html( size_format( wp_max_upload_size() ) ) ); ?></p>
 </div><!-- .add-gallery -->

@@ -1,19 +1,25 @@
 <div class="add-gallery">
 	<form ng-submit="postGallery(item)">
 		<input type="hidden" id="path" value="{{path}}">
-		<div class="form-group">
-			<label for="name">Name</label>
-			<input type="text" class="form-control" id="name" ng-model="item.name"  ng-change="generateSlug(item.name)" placeholder="Name" required>
-		</div>
-		<div class="form-group">
-			<label for="description">Description</label>
-			<textarea class="form-control" id="description" ng-model="item.description"></textarea>
-		</div>
-		<div class="form-group">
-			<label for="file">Slug</label>
-			<input type="text" class="form-control" id="file" ng-model="item.file" placeholder="Name" required>
-		</div>
-		
-		<input class="btn btn-primary" type="submit" value="Submit" ng-click="">
+		<table class="form-table">
+			<tbody>
+				<tr>
+					<th><label for="name">Name</label></th>
+					<td><input type="text" class="regular-text" id="name" ng-model="item.name"  ng-change="generateSlug(item.name)" placeholder="Name" required></td>
+				</tr>
+				<tr>
+					<th><label for="description">Description</label></th>
+					<td><textarea id="description" ng-model="item.description"
+							class="large-text" rows="10" cols="50"></textarea></td>
+				</tr>
+				<tr>
+					<th><label for="file">Slug</label></th>
+					<td><input type="text" class="regular-text" id="file" ng-model="item.file" placeholder="Name" required></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="submit">
+			<input type="submit" value="Save changes" class="button button-primary">			
+		</p>
 	</form>
 </div><!-- .add-gallery -->
