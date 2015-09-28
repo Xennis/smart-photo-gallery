@@ -6,6 +6,10 @@ function MainController($scope, $state, Restangular, $http) {
 			label: 'Home'
 		},
 		{
+			state: 'addPhotos',
+			label: 'Add photos'
+		},
+		{
 			state: 'addGallery',
 			label: 'Add gallery'
 		}

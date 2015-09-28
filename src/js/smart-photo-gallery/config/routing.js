@@ -37,6 +37,12 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 		template: require('../view/state/main/galleries.html'),
 		controller: require('../controller/state/main/GalleriesController')		
 	})
+	.state('addPhotos', {
+		parent: 'main',
+		url: '/addPhotos/{path:nonURIEncoded}',
+		template: require('../view/state/main/addPhotos.html'),
+		controller: require('../controller/state/main/AddPhotosController')	
+	})	
 	.state('addGallery', {
 		parent: 'main',
 		url: '/addGallery/{path:nonURIEncoded}',

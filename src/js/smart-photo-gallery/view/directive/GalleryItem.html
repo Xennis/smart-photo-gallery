@@ -1,6 +1,6 @@
 <div class="gallery-item">
 	<h5 class="gallery-title">
-		<a ui-sref="galleries({ path: item.file })"  ui-sref-opts="{reload: true}">{{item.title}}</a>
+		<a ui-sref="galleries({ path: item.file })"  ui-sref-opts="{reload: true}">{{item.name}}</a>
 	</h5>
 	<p class="gallery-description">{{item.description | limitTo:50}}{{item.description.length > 50 ? '...' : ''}}</p>
 </div>
