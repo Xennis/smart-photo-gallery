@@ -22,18 +22,24 @@ function MainController($scope, $state, Restangular, $http) {
 	
 	//
 	$scope.showStates = function(state) {
-		if (state === $scope.navbarTabs[3].state && $scope.path == '') {
+		if (state === $scope.navbarTabs[1].state && $scope.path === '') {
+			return false;
+		}		
+		else if (state === $scope.navbarTabs[2].state && $scope.gallery.depth >= 3) {
 			return false;
 		}
-		else if (state === $scope.navbarTabs[2].state && $scope.gallery.depth >= 3) {
+		else if (state === $scope.navbarTabs[3].state && $scope.path === '') {
 			return false;
 		}
 		return true;
 	};
 
 	//
-	$scope.gallery;	
-	$scope.requestGallery = function(path) {
+	$scope.gallery = {
+		id: undefined,
+		depth: undefined
+	};
+	var requestGallery = function(path) {
 		Restangular.one('galleries', 'x').get({
 			path: path
 		}).then(function (gallery) {
@@ -46,7 +52,7 @@ function MainController($scope, $state, Restangular, $http) {
 	// Get routing params
 	$scope.path = $state.params.path;
 	// Request gallery data
-	$scope.requestGallery($scope.path);
+	requestGallery($scope.path);
 };
 	
 MainController.$inject = ['$scope', '$state', 'Restangular', '$http'];

@@ -6,4 +6,7 @@
 		</div>-->
 		<gallery-item ng-repeat="item in galleries" item="item"></gallery-item>
 	</div><!-- .gallery -->
+	<div class="photo">
+		<photo-item ng-repeat="item in photos" filepath="http://xennis.de/wordpress/wp-content/uploads/smart-photo-gallery/thumb/{{gallery.file}}" item="item"></photo-item>
+	</div><!-- .photo -->
 </div><!-- .spg-galliers-zone -->

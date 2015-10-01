@@ -19,7 +19,8 @@ class SPG_Api_RestServer {
 	const API_NAMESPACE = 'smart-gallery/api/';
 	
 	const ROUTE_GALLERIES = 'galleries';
-	
+	const ROUTE_PHOTOS = 'photos';
+
 	private $args = array();
 	
 
@@ -34,6 +35,7 @@ class SPG_Api_RestServer {
 	}
 
 	public function serve_request( $route = null ) {
+		require_once SPG_DIR.'/src/php/api/model/Common.php';
 		
 		$request = new SPG_Api_Request($route);
 		$response = new SPG_Api_Response();
@@ -72,6 +74,39 @@ class SPG_Api_RestServer {
 				$response->setBody($model->getItemByCondition($request->getParam('path')));
 			}
 		}
+		
+		else if($request->getRoute() == self::ROUTE_PHOTOS) {
+			require_once SPG_DIR.'/src/php/api/model/Photos.php';
+			$model = new SPG_Api_Model_Photos();
+			
+			switch ($request->getMethod()) {
+				case 'GET':
+					$response->setBody($model->getList($request->getParam('gallery')));
+					break;
+//				case 'POST':
+//					$response->setStatus($model->postItem($request->getBody()));
+//					break;
+			}
+		}
+		else if($this->_startsWith($request->getRoute(), self::ROUTE_PHOTOS)) {
+			require_once SPG_DIR.'/src/php/api/model/Photos.php';
+			$model = new SPG_Api_Model_Photos();
+			$id = $request->getRoute(1);
+			if (is_numeric($id)) {
+				
+				switch ($request->getMethod()) {
+					case 'GET':
+						$response->setBody($model->getItem($id));
+						break;
+					case 'PUT':
+						$response->setStatus($model->putItem($request->getBody(), $id));
+						break;
+					case 'DELETE':
+						$response->setStatus($model->deleteItem($id));
+						break;
+				}	
+			}
+		}		
 		
 		$response->execute();
 	}

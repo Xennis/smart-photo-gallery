@@ -1,3 +1,5 @@
+@item-width: 250px;
+
 .spg-galliers-zone {
 	.gallery {
 		.gallery-item {
@@ -22,5 +24,30 @@
 				padding: 10px;
 			}
 		}*/
+	}
+	
+	.photo {
+		
+		.photo-item {
+			display: inline-block;
+			float: left;
+			width: @item-width;
+			margin: 5px;
+			padding: 5px;
+			background: white;
+			background: rgb(241, 241, 241);
+			border: 1px solid #cccccc;
+			
+			img {
+				width: @item-width;
+			}
+			
+			textarea {
+				width: @item-width;
+				height: 80px;
+				padding: 0px;
+				border: 0px;
+			}
+		}
 	}
 }

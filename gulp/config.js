@@ -15,7 +15,7 @@ module.exports = {
 		dest: 'dist/'
 	},
 	watch: {
-		styles: 'src/less/*.less',
+		styles: 'src/less/**/*.less',
 		webpack: ['src/js/smart-photo-gallery/**/*.js', 'src/js/smart-photo-gallery/**/*.html']
 	},
 	webpack: {

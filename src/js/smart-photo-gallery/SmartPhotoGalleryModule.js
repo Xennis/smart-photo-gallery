@@ -10,4 +10,6 @@ angular.module('smart-photo-gallery', ['ui.router', 'restangular'])
 	
 	// Directives
 	.directive('galleryItem', require('./directive/GalleryItem'))
+	.directive('photoItem', require('./directive/PhotoItem'))
+
 ;
