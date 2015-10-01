@@ -4,7 +4,7 @@ var config = require('../config').serve,
 	gulp = require('gulp'),
 	$ = require('gulp-load-plugins')();
 
-gulp.task('serve', ['styles', 'scripts', 'webpack'], function() {
+gulp.task('serve', ['styles', 'webpack'], function() {
     browserSync({
         port: config.port,
         server: {

@@ -5,7 +5,7 @@ var webpack = require('webpack');
 module.exports = {
 	entry: './src/js/smart-photo-gallery/SmartPhotoGalleryModule.js',
 	output: {
-		filename: 'angular-module.min.js',
+		filename: 'smart-photo-gallery.min.js',
 		path: 'dist/'
 	},
     module: {
