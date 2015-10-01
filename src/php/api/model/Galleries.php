@@ -28,6 +28,7 @@ class SPG_Api_Model_Galleries {
 		// e.g. "cars/bmw/1950" =>  ["cars", "bmw"]
 		$fileExplore = explode('/', $file);
 		array_pop($fileExplore);
+
 		// Create a strings to find all parent galleries and the gallery itself.
 		// e.g. $file + ["cars", "bmw"] => "'cars/bmw/1950', 'cars/bmw', 'cars'"
 		$galleryFiles = "'{$file}'";
@@ -43,11 +44,13 @@ class SPG_Api_Model_Galleries {
 		// Get the gallery, which is the last element of the array since the
 		// quere was ordered ascend by the file column.
 		$gallery = array_pop($result);
+		// The depth is the number of parent galleries, i.e. the size of the
+		// array.
+		$gallery['depth'] = sizeof($result);
 		// Add the parents, which is the rest of the array since the array_pop
 		// operation removes the last item.
 		$gallery['parents'] = $result;
-		
-		
+
 		return $gallery;
 	}
 	
