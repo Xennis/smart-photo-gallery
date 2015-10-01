@@ -24,7 +24,7 @@ class WPLDK_Database_Model {
 		return $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE ".$whereCondition, $output_type);
 	}
 	
-	public function getMultiple($whereCondition = NULL, $orderBy = NULL) {
+	public function getMultiple($whereCondition = NULL, $orderBy = NULL, $output_type = self::OUTPUT_TYPE_OBJECT) {
 		global $wpdb;
 		
 		$body = "";
@@ -34,8 +34,7 @@ class WPLDK_Database_Model {
 		if ($orderBy) {
 			$body .= " ORDER BY `{$orderBy}`";
 		}
-		
-		return $wpdb->get_results("SELECT * FROM `{$this->table}` ".$body);
+		return $wpdb->get_results("SELECT * FROM `{$this->table}` ".$body, $output_type);
 	}
 	
 	/**

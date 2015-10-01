@@ -1,6 +1,19 @@
 <h2>Gallery: {{gallery.name}}</h2>
 
-Path: {{path}}
+<nav class="gallery-breadcrumb">
+	<ul ng-if="path">
+		<li>Pfad:&nbsp;<a 
+			ui-sref="galleries({ path: '' })"
+			ui-sref-opts="{reload: true}">Home</a>
+		</li>
+		<li ng-repeat="parent in gallery.parents">
+			>&nbsp;<a 
+			ui-sref="galleries({ path: parent.file })"
+			ui-sref-opts="{reload: true}">{{parent.name}}</a>
+		</li>
+	</ul>
+	<div>&nbsp;</div>
+</nav><!-- .gallery-breadcrumb -->
 
 <h2 class="nav-tab-wrapper">
 	<a
