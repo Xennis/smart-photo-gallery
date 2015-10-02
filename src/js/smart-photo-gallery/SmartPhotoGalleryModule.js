@@ -2,8 +2,9 @@ require('angular-ui-router');
 require('lodash');
 require('restangular');
 require('../bower_components/angular-ui-sortable/sortable.min.js');
+require('ngInfiniteScroll');
 
-angular.module('smart-photo-gallery', ['ui.router', 'restangular', 'ui.sortable'])
+angular.module('smart-photo-gallery', ['ui.router', 'restangular', 'ui.sortable', 'infinite-scroll'])
 	
 	// Config
 	.config(require('./config/api'))

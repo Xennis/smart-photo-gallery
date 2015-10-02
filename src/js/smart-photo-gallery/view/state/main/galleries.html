@@ -1,4 +1,6 @@
-<div class="spg-galliers-zone">
+<div class="spg-galliers-zone"
+	infinite-scroll="onPageBottom()"
+	infinite-scroll-distance="1">
 	<div class="gallery">
 		<!--<div class="gallery-item add">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -9,6 +11,6 @@
 	<div class="photo"
 		ui-sortable="sortableOptions"
 		ng-model="photos">
-		<photo-item ng-repeat="item in photos" filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}" item="item"></photo-item>
+		<photo-item ng-repeat="item in photos | limitTo:photosLimit" filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}" item="item"></photo-item>
 	</div><!-- .photo -->
 </div><!-- .spg-galliers-zone -->

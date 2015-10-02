@@ -36,6 +36,12 @@ function GalleriesController($scope, $state, Restangular, $http) {
 //			});
 //		}
 	};
+	
+	$scope.photosLimit = 8;
+	// Endless scroll
+	$scope.onPageBottom = function() {
+		$scope.photosLimit += 8;
+	};
 
 	// Get routing params (TODO: double with main)
 	$scope.path = $state.params.path;

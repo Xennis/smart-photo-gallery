@@ -5,6 +5,7 @@
 	"angular-ui-router": "~0.2.*",
 	"angular-ui-sortable": "~0.13.x",
 	"dropzone": "~4.0.x",
+	"ngInfiniteScroll": "~1.2.x",
 	"restangular": "~1.5.*"
   },
   "resolutions": {
