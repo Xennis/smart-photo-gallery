@@ -1,8 +1,8 @@
 <div class="add-photos">
-	<form method="POST" enctype="multipart/form-data" action="" class="dropzone">
+	<form method="POST" enctype="multipart/form-data" class="dropzone">
 		<div class="fallback">
 			<input name="file" type="file" multiple /> 
 		</div>
 	</form>
-	<p class="max-upload-size"><?php printf( __( 'Maximum upload file size: %s.' ), esc_html( size_format( wp_max_upload_size() ) ) ); ?></p>
+	<p class="max-upload-size">Maximum upload file size: {{appConfig.maximum_upload_file_size}}</p>
 </div><!-- .add-gallery -->

@@ -7,6 +7,6 @@ var config = require('../config').watch,
 gulp.task('watch', ['serve'], function () {
 	gulp.watch(config.styles, ['styles']);
 	gulp.watch(config.webpack, ['webpack']);
-	gulp.watch('dist/angular-module.min.js')
+	gulp.watch('dist/smart-photo-gallery.min.js')
 		.on('change', browserSync.reload);
 });

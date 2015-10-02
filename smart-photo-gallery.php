@@ -39,7 +39,6 @@ function spg_admin_enqueue_scripts() {
     wp_enqueue_style(SPG_NAME.'-style', plugins_url('/dist/'.SPG_NAME.'.min.css', __FILE__));
 	wp_enqueue_script('angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js');
     wp_enqueue_script(SPG_NAME.'-script', plugins_url('/dist/'.SPG_NAME.'.min.js', __FILE__), array('jquery-ui-sortable')); // TODO: dependency?
-    wp_enqueue_script(SPG_NAME.'-angular', plugins_url('/dist/angular-module.min.js', __FILE__), array());
 }
 add_action('admin_enqueue_scripts', 'spg_admin_enqueue_scripts');
 

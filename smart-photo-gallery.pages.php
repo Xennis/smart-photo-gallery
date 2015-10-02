@@ -17,11 +17,9 @@ add_action('admin_menu', 'spg_admin_menu');
  * Page galleries
  */
 function spg_page_galleries() {
-	?>
-		<div class="wrap" ng-app="smart-photo-gallery">
-			<div ui-view></div>
-		</div><!-- .wrap -->
-	<?php
+	require_once(SPG_DIR . '/src/php/view/page/Galleries.php');
+	$view = new View_Page_Galleries();
+	$view->display();
 }
 
 /*

@@ -7,15 +7,26 @@
 
 	<title>Smart Photo Gallery</title>		
 		
-	<!-- Include style and scripts -->
+	<!-- Include styles -->
 	<link rel="stylesheet" href="http://xennis.de/wordpress/wp-admin/load-styles.php?c=1&dir=ltr&load=dashicons,admin-bar,wp-admin,buttons,wp-auth-check,wp-color-picker&ver=4.3.1">
 	<link rel="stylesheet" type="text/css" href="smart-photo-gallery.min.css">
+	
+	<!-- Include scripts -->
+	<script type='text/javascript' src='http://xennis.de/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=jquery-core,jquery-migrate,utils,jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable&amp;ver=4.3.1'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
 	<script type="text/javascript" src="smart-photo-gallery.min.js"></script>
 	
 </head>
 <body>
 
+	<script>
+		// Used to pass values from PHP
+		window.spgAppConfig = {
+			upload_url: 'http://xennis.de/wordpress/wp-content/uploads/smart-photo-gallery',
+			maximum_upload_file_size: '10 MB'
+		};
+	</script>
+	
 	<div class="wrap" ng-app="smart-photo-gallery">
 		<div ui-view></div>
 	</div>
