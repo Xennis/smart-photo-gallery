@@ -4,7 +4,8 @@ function PhotoItem() {
         template: require('../view/directive/PhotoItem.html'),
 		scope: {
 			filepath: '@',
-			item: '='
+			item: '=',
+			sequence: '='
 		}
     };
 };

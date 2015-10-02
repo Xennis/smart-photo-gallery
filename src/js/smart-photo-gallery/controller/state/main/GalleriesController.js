@@ -37,6 +37,23 @@ function GalleriesController($scope, $state, Restangular, $http) {
 //		}
 	};
 	
+	$scope.postPhotos = function(photos) {
+		if ($scope.gallery.id) {
+			Restangular.all('photos').customPUT(photos).then(function(data) {
+				console.log(data);
+				if (data) {
+					$scope.adminNotice('updated', 'Saved changes');					
+				} else {
+					$scope.adminNotice('error', 'Failed to save changes ' + data);					
+				}
+			}, function(data) {
+				// TODO: move above code here
+			});
+		} else {
+			console.warn('postPhotos: no gallery id')
+		}
+	};
+	
 	$scope.photosLimit = 8;
 	// Endless scroll
 	$scope.onPageBottom = function() {

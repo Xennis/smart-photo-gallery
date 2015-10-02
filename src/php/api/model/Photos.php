@@ -11,4 +11,8 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 		}
 		return $this->model->getMultiple($whereCondition, 'sequence');
 	}
+	
+	public function putItems($data) {
+		return $this->model->updateMultiple($data);
+	}
 }

@@ -45,9 +45,6 @@ class WPLDK_Database_Model {
 	 */
 	public function insert(array $data) {
 		global $wpdb;
-		echo "b)";
-		echo $this->table;
-		echo $data;
 		$result = $wpdb->insert($this->table, $data);
 		if ($result) {
 			return $wpdb->insert_id;
@@ -76,7 +73,10 @@ class WPLDK_Database_Model {
 	 */
 	public function updateMultiple($data) {
 		$error_IDs = [];
-		foreach ($data as $id => $item) {
+		foreach ($data as $item) {
+			$id = $item['id'];
+			unset($item['id']);
+
 			$result = $this->update($item, $id);
 			if ($result === FALSE) { // Returns 0, if zero rows got updated. That's not an error.
 				$error_IDs[] = $id;

@@ -7,6 +7,13 @@ function MainController($scope, $state, Restangular, $http) {
 		console.warn('No global configuration window.spgAppConfig');
 	}
 
+	// Messages
+	$scope.adminNoticeClass = '';
+	$scope.adminNoticeText = '';
+	$scope.adminNotice = function(type, text) {
+		$scope.adminNoticeClass = type;
+		$scope.adminNoticeText = text;
+	};
 	
 	// Navbar tabs
 	$scope.navbarTabs = [

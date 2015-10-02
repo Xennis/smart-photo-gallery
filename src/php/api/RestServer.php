@@ -83,6 +83,9 @@ class SPG_Api_RestServer {
 				case 'GET':
 					$response->setBody($model->getList($request->getParam('gallery')));
 					break;
+				case 'PUT':
+					$response->setBody($model->putItems($request->getBody()));
+					break;
 //				case 'POST':
 //					$response->setStatus($model->postItem($request->getBody()));
 //					break;

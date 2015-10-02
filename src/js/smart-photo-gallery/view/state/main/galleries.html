@@ -1,4 +1,4 @@
-<div class="spg-galliers-zone"
+<div class="gallieres"
 	infinite-scroll="onPageBottom()"
 	infinite-scroll-distance="1">
 	<div class="gallery">
@@ -8,9 +8,16 @@
 		</div>-->
 		<gallery-item ng-repeat="item in galleries" item="item"></gallery-item>
 	</div><!-- .gallery -->
-	<div class="photo"
-		ui-sortable="sortableOptions"
-		ng-model="photos">
-		<photo-item ng-repeat="item in photos | limitTo:photosLimit" filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}" item="item"></photo-item>
-	</div><!-- .photo -->
-</div><!-- .spg-galliers-zone -->
+	<form ng-submit="postPhotos(photos)">		
+		<div class="photo"
+			ui-sortable="sortableOptions"
+			ng-model="photos">
+			<photo-item
+				ng-repeat="item in photos | limitTo:photosLimit"
+				filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
+				item="item"
+				sequence="$index"></photo-item>
+		</div><!-- .photo -->
+		<input type="submit" value="Save changes" class="button button-primary">
+	</form>
+</div><!-- .gallieres -->
