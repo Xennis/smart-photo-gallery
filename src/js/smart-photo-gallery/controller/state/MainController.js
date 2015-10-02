@@ -10,6 +10,7 @@ function MainController($scope, $state, Restangular, $http) {
 	// Messages
 	$scope.adminNoticeClass = '';
 	$scope.adminNoticeText = '';
+	// Type: 'updated', 'error'
 	$scope.adminNotice = function(type, text) {
 		$scope.adminNoticeClass = type;
 		$scope.adminNoticeText = text;

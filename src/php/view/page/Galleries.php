@@ -18,5 +18,5 @@ class View_Page_Galleries {
 			</div><!-- .wrap -->
 		<?php		
 	}
-	
+		
 }

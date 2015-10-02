@@ -20,12 +20,13 @@ abstract class SPG_Config_Db {
 			UNIQUE KEY `file` (`file`)	
 		");
 		
+		// TODO: set sequence in server?
 		(new WPLDK_Database_Model('photos'))->createTable("
 			`id` int(10) NOT NULL AUTO_INCREMENT,
 			`file` varchar(50) NOT NULL,
 			`description` text NOT NULL,
 			`gallery` smallint(4) NOT NULL,
-			`sequence` smallint(3) NOT NULL,
+			`sequence` smallint(3) NOT NULL DEFAULT '999',
 			PRIMARY KEY (`id`)
 		");		
 	}
