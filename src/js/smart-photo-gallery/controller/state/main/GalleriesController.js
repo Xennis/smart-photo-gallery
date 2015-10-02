@@ -1,5 +1,5 @@
 function GalleriesController($scope, $state, Restangular, $http) {
-	
+
 	// Function to request and store galleries
 	$scope.galleries = [];
 	var requestGalleries = function(path) {
@@ -22,6 +22,19 @@ function GalleriesController($scope, $state, Restangular, $http) {
 		}, function() {
 			console.warn('Request failed');
 		});
+	};
+	
+	// Options to sort photos
+	$scope.sortableOptions = {
+		//'ui-floating': true,
+		//cursor: 'move',
+		//containment: 'parent',
+		//item: '> .gallery-item',
+//		stop: function(event, table) {
+//			jQuery('.spg-photozone .order').each(function(index) {
+//				jQuery(this).val(index);
+//			});
+//		}
 	};
 
 	// Get routing params (TODO: double with main)

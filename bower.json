@@ -3,6 +3,7 @@
   "description": "",
   "dependencies": {
 	"angular-ui-router": "~0.2.*",
+	"angular-ui-sortable": "~0.13.x",
 	"dropzone": "~4.0.x",
 	"restangular": "~1.5.*"
   },
