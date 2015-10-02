@@ -1,11 +1,5 @@
-<div class="photo-item">
-	<img
-		ng-src="{{filepath}}/{{item.file}}"
-		alt="{{item.id}}">
-	<textarea
-		ng-model="item.description"></textarea>
-	<input
-		type="hidden"
-		ng-model="item.sequence"
-		value="{{sequence}}">
-</div>
+<img
+	alt="{{item.id}}"
+	ng-src="{{filepath}}/{{item.file}}">
+<textarea
+	ng-model="item.description"></textarea>

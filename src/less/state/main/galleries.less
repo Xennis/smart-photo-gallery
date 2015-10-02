@@ -6,40 +6,32 @@
 		position: absolute;
 		right: 30px;
 		top: 95px;
-	}	
+	}
+	
+	ul {
+		list-style: none;
+	}
+	li:not(:last-child) {
+		float: left;
+	}
+	li {
+		display: inline-block;
+		width: @item-width;	
+		margin: 5px;
+		padding: 5px;		
+	}
 	
 	.gallery {
-		.gallery-item {
-			display: inline-block;
-			width: 200px;
+		li {
 			height: 100px;
-			margin: 5px;
-			padding: 5px;
 			background: white;
 			box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.5);
 		}
-		/*.gallery-item.add {
-			background: none;
-			border: 2px dashed gray;
-			box-shadow: none;
-			color: gray;
-			text-align: center;
-			
-			.glyphicon {
-				font-size: 30px;
-				padding: 10px;
-			}
-		}*/
 	}
 	
 	.photo {
 		
-		.photo-item {
-			display: inline-block;
-			width: @item-width;
-			margin: 5px;
-			padding: 5px;
-			background: white;
+		li {
 			background: rgb(241, 241, 241);
 			border: 1px solid #cccccc;
 			

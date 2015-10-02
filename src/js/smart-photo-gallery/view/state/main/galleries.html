@@ -1,23 +1,26 @@
 <div class="gallieres"
 	infinite-scroll="onPageBottom()"
 	infinite-scroll-distance="1">
-	<div class="gallery">
-		<!--<div class="gallery-item add">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-			<p>Add new gallery</p>
-		</div>-->
-		<gallery-item ng-repeat="item in galleries" item="item"></gallery-item>
-	</div><!-- .gallery -->
+	<ul class="gallery">
+		<li ng-repeat="item in galleries">
+			<gallery-item item="item" /></gallery-item>
+		</li>
+	</ul><!-- .gallery -->
 	<form ng-submit="postPhotos(photos)">		
-		<div class="photo"
-			ui-sortable="sortableOptions"
-			ng-model="photos">
-			<photo-item
-				ng-repeat="item in photos | limitTo:photosLimit"
-				filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
-				item="item"
-				sequence="$index"></photo-item>
-		</div><!-- .photo -->
-		<input type="submit" value="Save changes" class="button button-primary">
+		<ul class="photo"
+			ng-model="photos"
+			ui-sortable="sortableOptions">
+			<li
+				ng-repeat="item in photos | limitTo:photosLimit">
+				<photo-item
+					filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
+					item="item"
+					sequence="$index"></photo-item>
+			</li>
+		</ul><!-- .photo -->
+		<input
+			class="button button-primary"
+			type="submit"
+			value="Save changes">
 	</form>
 </div><!-- .gallieres -->
