@@ -29,6 +29,22 @@ function ApiFactory(Restangular) {
 			}, function() {
 				failure();
 			});
+		},
+		
+		getLicences: function(success, failure) {
+			Restangular.all('licences').getList().then(function(data) {
+				success(data);
+			}, function() {
+				failure();
+			});			
+		},
+		
+		getPhotographers: function(success, failure) {
+			Restangular.all('photographers').getList().then(function(data) {
+				success(data);
+			}, function() {
+				failure();
+			});
 		}
     };
 };

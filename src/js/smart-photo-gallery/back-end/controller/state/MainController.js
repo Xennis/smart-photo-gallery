@@ -32,6 +32,14 @@ function MainController($scope, $state, ApiFactory, $http) {
 		{
 			state: 'editGallery',
 			label: 'Edit gallery'
+		},
+		{
+			state: 'photographers',
+			label: 'Photographers'
+		},
+		{
+			state: 'licences',
+			label: 'Licences'
 		}
 	];
 	$scope.navbarTabsCurrent = $state.current.name;

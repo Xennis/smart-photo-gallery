@@ -1,0 +1,49 @@
+<div class="photographers">
+	<div class="tablenav top">
+		<div class="tablenav-pages one-page">
+			<span class="displaying-num">{{photographers.length}} items</span>
+		</div>
+	</div>
+	<form ng-submit="submit()">
+		<table class="widefat striped">
+			<thead>
+				<tr>
+					<th class="column-primary">Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in photographers">
+					<td>
+						<input
+							class="regular-text"
+							type="text"
+							ng-model="item.name">
+					</td>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input
+							class="regular-text"
+							placeholder="Add a photographer"
+							ng-model="newPhotographer.name"
+							type="text">
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Name</th>
+					<th>Action</th>
+				</tr>
+			</tfoot>			
+		</table>
+		<div class="tablenav buttom">
+			<submit-button></submit-button>
+		</div>
+	</form>
+</div>

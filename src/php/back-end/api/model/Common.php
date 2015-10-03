@@ -34,6 +34,10 @@ abstract class SPG_Api_Model_Common {
 		}		
 	}
 	
+	public function putItems($data) {
+		return $this->model->updateMultiple($data);
+	}
+	
 	public function deleteItem($id) {
 		$result = $this->model->delete($id);
 		if ($result === false) {

@@ -12,7 +12,6 @@ abstract class SPG_Config_Db {
 		(new WPLDK_Database_Model('galleries'))->createTable("
 			`id` smallint(4) NOT NULL AUTO_INCREMENT,
 			`file` varchar(50) NOT NULL,
-			`folder` int(10) NOT NULL,
 			`name` varchar(100) NOT NULL,
 			`description` text NOT NULL,
 			`thumb` int(10) NOT NULL,
@@ -28,6 +27,20 @@ abstract class SPG_Config_Db {
 			`gallery` smallint(4) NOT NULL,
 			`sequence` smallint(3) NOT NULL DEFAULT '999',
 			PRIMARY KEY (`id`)
+		");
+		
+		(new WPLDK_Database_Model('photographers'))->createTable("
+			`id` smallint(3) NOT NULL AUTO_INCREMENT,
+			`name` varchar(60) NOT NULL,
+			PRIMARY KEY (`id`)
 		");		
+		
+		(new WPLDK_Database_Model('licences'))->createTable("
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`name` varchar(60) NOT NULL,
+			`link` varchar(100) NOT NULL,
+			PRIMARY KEY (`id`)
+		");
+		
 	}
 }

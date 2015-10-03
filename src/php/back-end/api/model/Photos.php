@@ -95,8 +95,5 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 		$img->thumbnail(250, 250)
 			->save($target, 70);
 	}
-	
-	public function putItems($data) {
-		return $this->model->updateMultiple($data);
-	}
+
 }

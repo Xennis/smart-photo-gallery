@@ -1,0 +1,64 @@
+<div class="photographers">
+	<div class="tablenav top">
+		<div class="tablenav-pages one-page">
+			<span class="displaying-num">{{licences.length}} items</span>
+		</div>
+	</div>
+	<form ng-submit="submit(licences, newLicence)">
+		<table class="widefat striped">
+			<thead>
+				<tr>
+					<th class="column-primary">Name</th>
+					<th>Link</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in licences">
+					<td>
+						<input
+							class="regular-text"
+							type="text"
+							ng-model="item.name">
+					</td>
+					<td>
+						<input
+							class="regular-text"
+							type="url"
+							ng-model="item.link">						
+					</td>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input
+							class="regular-text"
+							placeholder="Add licence name"
+							ng-model="newLicence.name"
+							type="text">
+					</td>
+					<td>
+						<input
+							class="regular-text"
+							placeholder="Add licence link"
+							ng-model="newLicence.link"
+							type="text">
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Name</th>
+					<th>Link</th>
+					<th>Action</th>
+				</tr>
+			</tfoot>			
+		</table>
+		<div class="tablenav buttom">
+			<submit-button></submit-button>
+		</div>
+	</form>
+</div>

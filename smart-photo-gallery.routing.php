@@ -1,8 +1,8 @@
 <?php
 require_once(WPLDK_DIR.'/Database/Model.php');
-require_once(SPG_DIR_PHP_BACKEND.'/api/Request.php');
-require_once(SPG_DIR_PHP_BACKEND.'/api/Response.php');
-require_once(SPG_DIR_PHP_BACKEND.'/api/RestServer.php');
+require_once(SPG_DIR_PHP_BACKEND.'/api/server/Request.php');
+require_once(SPG_DIR_PHP_BACKEND.'/api/server/Response.php');
+require_once(SPG_DIR_PHP_BACKEND.'/api/server/RestServer.php');
 $spgRestServer = new SPG_Api_RestServer();
 
 function spg_add_api_route() {

@@ -16,7 +16,7 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 	 * 
 	 */
 	function valToString(val) {
-		return val !== null ? val.toString() : val;
+		return val !== undefined ? val.toString() : val;
 	}
 	$urlMatcherFactoryProvider.type('nonURIEncoded', {
 		encode: valToString,
@@ -54,6 +54,19 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 		url: '/editGallery/{path:nonURIEncoded}',
 		template: require('../view/state/main/editGallery.html'),
 		controller: require('../controller/state/main/EditGalleryController')	
+	})
+	
+	.state('photographers', {
+		parent: 'main',
+		url: '/photographers',
+		template: require('../view/state/main/photographers.html'),
+		controller: require('../controller/state/main/PhotographersController')	
+	})
+	.state('licences', {
+		parent: 'main',
+		url: '/licences/',
+		template: require('../view/state/main/licences.html'),
+		controller: require('../controller/state/main/LicencesController')	
 	})
 	;		
 }

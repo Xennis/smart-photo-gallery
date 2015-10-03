@@ -9,5 +9,6 @@ angular.module('smart-photo-gallery.back-end', ['smart-photo-gallery.common', 'u
 	// Directives
 	.directive('galleryItem', require('./directive/GalleryItem'))
 	.directive('photoItem', require('./directive/PhotoItem'))
+	.directive('submitButton', require('./directive/SubmitButton'))	
 
 ;
