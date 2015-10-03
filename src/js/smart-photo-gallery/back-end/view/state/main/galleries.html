@@ -11,11 +11,14 @@
 			ng-model="photos"
 			ui-sortable="sortableOptions">
 			<li
+				class="photo-item"
 				ng-repeat="item in photos | limitTo:photosLimit">
 				<photo-item
 					filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
 					item="item"
-					sequence="$index"></photo-item>
+					sequence="$index"
+					photographers="photographers"
+					licences="licences"></photo-item>
 			</li>
 		</ul><!-- .photo -->
 		<input

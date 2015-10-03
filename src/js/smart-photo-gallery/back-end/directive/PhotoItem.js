@@ -5,7 +5,9 @@ function PhotoItem() {
 		scope: {
 			filepath: '@',
 			item: '=',
-			sequence: '='
+			sequence: '=',
+			photographers: '=',
+			licences: '='
 		},
 		link: function($scope, element, attrs) {			
 			$scope.$watch('sequence', function() {

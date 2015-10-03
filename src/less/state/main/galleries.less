@@ -30,8 +30,8 @@
 	}
 	
 	.photo {
-			
-		li {
+		
+		li.photo-item {
 			background: rgb(241, 241, 241);
 			border: 1px solid #cccccc;
 			
@@ -51,6 +51,26 @@
 			border: gray;
 			background: #999999;
 			height: 340px;
+		}
+		
+		.options {
+
+			.right {
+				float: right;
+			}
+			
+			.menu {
+				position: absolute;
+				display: block;
+				z-index: 10;
+				border: 1px solid #999999;
+				background: #ccc;
+				
+				li {
+					float: none;
+					display: block;
+				}
+			}
 		}
 	}
 }

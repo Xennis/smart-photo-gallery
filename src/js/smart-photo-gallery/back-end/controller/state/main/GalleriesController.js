@@ -2,6 +2,7 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 	
 	// Options to sort photos
 	$scope.sortableOptions = {
+		items: "> .photo-item",
 		cursor: 'move',
 		containment: 'parent',
 		placeholder: 'placeholder'
@@ -52,6 +53,20 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 			});
 		};
 	});
+	
+	$scope.photographers = [];
+	ApiFactory.getPhotographers(function(data) {
+		$scope.photographers = data;
+	}, function() {
+		console.warn('Request failed');
+	});	
+	
+	$scope.licences = [];
+	ApiFactory.getLicences(function(data) {
+		$scope.licences = data;
+	}, function() {
+		console.warn('Request failed');
+	});	
 };
 	
 GalleriesController.$inject = ['$scope', '$state', 'Restangular', 'ApiFactory'];
