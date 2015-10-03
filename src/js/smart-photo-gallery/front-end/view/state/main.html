@@ -1,0 +1,33 @@
+<h2>Gallery: {{gallery.name}}</h2>
+
+<nav class="gallery-breadcrumb">
+	<ul ng-if="path">
+		<li>Pfad:&nbsp;<a 
+			ui-sref="galleries({ path: '' })"
+			ui-sref-opts="{reload: true}">Home</a>
+		</li>
+		<li ng-repeat="parent in gallery.parents">
+			>&nbsp;<a 
+			ui-sref="galleries({ path: parent.file })"
+			ui-sref-opts="{reload: true}">{{parent.name}}</a>
+		</li>
+	</ul>
+	<div>&nbsp;</div>
+</nav><!-- .gallery-breadcrumb -->
+
+<div class="main"
+	infinite-scroll="onPageBottom()"
+	infinite-scroll-distance="1">
+	<ul class="gallery">
+		<li ng-repeat="item in galleries">
+			<gallery-item item="item" /></gallery-item>
+		</li>
+	</ul><!-- .gallery -->
+	<ul class="photo">
+		<li ng-repeat="item in photos | limitTo:photosLimit">
+			<photo-item
+				filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
+				item="item"></photo-item>
+		</li>
+	</ul><!-- .photo -->
+</div><!-- .main -->

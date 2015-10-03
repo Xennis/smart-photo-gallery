@@ -43,9 +43,20 @@ register_activation_hook( __FILE__, 'spg_register_activation' );
 function spg_admin_enqueue_scripts() {
     wp_enqueue_style(SPG_NAME.'-style', plugins_url('/dist/'.SPG_NAME.'.min.css', __FILE__));
 	wp_enqueue_script('angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js');
-    wp_enqueue_script(SPG_NAME.'.back-end-script', plugins_url('/dist/'.SPG_NAME.'.back-end.min.js', __FILE__), array('jquery-ui-sortable')); // TODO: dependency?
+    wp_enqueue_script(SPG_NAME.'.back-end-script', plugins_url('/dist/'.SPG_NAME.'.back-end.min.js', __FILE__), array('jquery-ui-sortable'));
 }
 add_action('admin_enqueue_scripts', 'spg_admin_enqueue_scripts');
+
+/**
+ * Enqueue scripts and styles.
+ */
+function spg_enqueue_scripts() {
+	// TODO: some line duplicated with spg_admin_enqueue_scripts
+    wp_enqueue_style(SPG_NAME.'-style', plugins_url('/dist/'.SPG_NAME.'.min.css', __FILE__));
+	wp_enqueue_script('angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js');
+    wp_enqueue_script(SPG_NAME.'.back-end-script', plugins_url('/dist/'.SPG_NAME.'.front-end.min.js', __FILE__), array('jquery'));
+}
+add_action('wp_enqueue_scripts', 'spg_enqueue_scripts');
 
 /*
  * Admin notices hook
@@ -68,8 +79,14 @@ function spg_plugin_action_links( $links ) {
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'spg_plugin_action_links');
 
+function spg_get_upload_url() {
+	$upload_url = wp_upload_dir();
+	return $upload_url['baseurl'].DIRECTORY_SEPARATOR.SPG_NAME;
+}
+
 /*
  * Include scripts
  */
 require_once(SPG_DIR.'/'.SPG_NAME.'.routing.php');
 require_once(SPG_DIR.'/'.SPG_NAME.'.pages.php');
+require_once(SPG_DIR.'/'.SPG_NAME.'.shortcodes.php');

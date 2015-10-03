@@ -3,7 +3,7 @@ module.exports = {
 	serve: {
 		port: 4000,
 		baseDir: ['dist', 'example'],
-		index: 'back-end.html'
+		index: 'front-end.html'
 	},
 	styles: {
 		src: 'src/less/smart-photo-gallery.less',
@@ -12,7 +12,7 @@ module.exports = {
 	watch: {
 		styles: 'src/less/**/*.less',
 		webpack: ['src/js/smart-photo-gallery/**/*.js', 'src/js/smart-photo-gallery/**/*.html'],
-		reload: 'dist/smart-photo-gallery.min.js'
+		reload: 'dist/smart-photo-gallery.*.min.js'
 	},
 	webpack: {
 		src: '../../webpack.config.js'

@@ -1,28 +1,4 @@
-function GalleriesController($scope, $state, Restangular, $http) {
-
-	// Function to request and store galleries
-	$scope.galleries = [];
-	var requestGalleries = function(path) {
-		Restangular.all('galleries').getList({
-			path: path
-		}).then(function(data) {
-			$scope.galleries = data;
-		}, function() {
-			console.warn('Request failed');
-		});
-	};
-	
-	// Function to request and store photos of a gallery
-	$scope.photos = [];
-	var requestPhotos = function(id) {
-		Restangular.all('photos').getList({
-			gallery: $scope.gallery.id
-		}).then(function(data) {
-			$scope.photos = data;
-		}, function() {
-			console.warn('Request failed');
-		});
-	};
+function GalleriesController($scope, $state, Restangular, ApiFactory) {
 	
 	// Options to sort photos
 	$scope.sortableOptions = {
@@ -57,17 +33,27 @@ function GalleriesController($scope, $state, Restangular, $http) {
 	// Get routing params (TODO: double with main)
 	$scope.path = $state.params.path;
 	// Request galleries
-	requestGalleries($scope.path);
+	$scope.galleries = [];
+	ApiFactory.getGalleries($scope.path, function(galleries) {
+		$scope.galleries = galleries;
+	}, function() {
+		console.warn('Request failed');
+	});
 	
 	// Gallery data is request via REST API in MainController. Hence wait for
 	// this data since we need the ID.
+	$scope.photos = [];
 	$scope.$watch('gallery', function() {
 		if ($scope.gallery.id) {
-			requestPhotos($scope.gallery.id);
-		}
+			ApiFactory.getPhotos($scope.gallery.id, function(data) {
+				$scope.photos = data;
+			}, function() {
+				console.warn('Request failed');
+			});
+		};
 	});
 };
 	
-GalleriesController.$inject = ['$scope', '$state', 'Restangular', '$http'];
+GalleriesController.$inject = ['$scope', '$state', 'Restangular', 'ApiFactory'];
 
 module.exports = GalleriesController;

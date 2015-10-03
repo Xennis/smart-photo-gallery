@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Smart Photo Gallery - Back End</title>		
+	<title>Smart Photo Gallery - Front End</title>		
 		
 	<!-- Include styles -->
 	<link rel="stylesheet" href="http://xennis.de/wordpress/wp-admin/load-styles.php?c=1&dir=ltr&load=dashicons,admin-bar,wp-admin,buttons,wp-auth-check,wp-color-picker&ver=4.3.1">
@@ -14,22 +14,24 @@
 	<!-- Include scripts -->
 	<script type='text/javascript' src='http://xennis.de/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=jquery-core,jquery-migrate,utils,jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable&amp;ver=4.3.1'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-	<script type="text/javascript" src="smart-photo-gallery.back-end.min.js"></script>
+	<script type="text/javascript" src="smart-photo-gallery.front-end.min.js"></script>
 	
 </head>
 <body>
 
-	<a href="front-end.html">Open front end</a>
+	<a href="back-end.html">Open back end</a>
 	
 	<script>
 		// Used to pass values from PHP
 		var spgAppConfig = {
-			upload_url: 'http://xennis.de/wordpress/wp-content/uploads/smart-photo-gallery',
-			maximum_upload_file_size: '10'
+			upload_url: 'http://xennis.de/wordpress/wp-content/uploads/smart-photo-gallery',			
+			path: 'hike/norway',
+			thumb_size: 250,
+			default_view: 'normal'
 		};
 	</script>
 	
-	<div class="wrap" ng-app="smart-photo-gallery.back-end">
+	<div class="wrap" ng-app="smart-photo-gallery.front-end">
 		<div ui-view></div>
 	</div>
 

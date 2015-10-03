@@ -4,7 +4,8 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		'smart-photo-gallery.back-end': './src/js/smart-photo-gallery/back-end/BackEndModule.js'
+		'smart-photo-gallery.back-end': './src/js/smart-photo-gallery/back-end/BackEndModule.js',
+		'smart-photo-gallery.front-end': './src/js/smart-photo-gallery/front-end/FrontEndModule.js'
 	},
 	output: {
 		path: 'dist/',

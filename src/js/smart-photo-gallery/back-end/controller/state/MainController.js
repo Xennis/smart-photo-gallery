@@ -1,4 +1,4 @@
-function MainController($scope, $state, Restangular, $http) {
+function MainController($scope, $state, ApiFactory, $http) {
 	// Get global config of the app (used to pass values from PHP)
 	if (spgAppConfig) {
 		$scope.appConfig = spgAppConfig;
@@ -49,28 +49,21 @@ function MainController($scope, $state, Restangular, $http) {
 		}
 		return true;
 	};
-
-	//
-	$scope.gallery = {
-		id: undefined,
-		depth: undefined
-	};
-	var requestGallery = function(path) {
-		Restangular.one('galleries', 'x').get({
-			path: path
-		}).then(function (gallery) {
-			$scope.gallery = gallery;
-		}, function() {
-			console.warn('Request failed');
-		});
-	};
 	
 	// Get routing params
 	$scope.path = $state.params.path;
 	// Request gallery data
-	requestGallery($scope.path);
+	$scope.gallery = {
+		id: undefined,
+		depth: undefined
+	};
+	ApiFactory.getGallery($scope.path, function(gallery) {
+		$scope.gallery = gallery;
+	}, function() {
+		console.warn('Request failed');
+	});
 };
 	
-MainController.$inject = ['$scope', '$state', 'Restangular', '$http'];
+MainController.$inject = ['$scope', '$state', 'ApiFactory', '$http'];
 
 module.exports = MainController;
