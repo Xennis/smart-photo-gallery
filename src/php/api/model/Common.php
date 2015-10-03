@@ -8,7 +8,7 @@ abstract class SPG_Api_Model_Common {
 		$this->model = new WPLDK_Database_Model($model);
 	}
 	
-	public function getList($whereCondition, $orderBy) {
+	public function getList($whereCondition = NULL, $orderBy = NULL) {
 		return $this->model->getMultiple($whereCondition, $orderBy);
 	}
 	

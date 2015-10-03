@@ -11,7 +11,7 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 		if ($gallery) {
 			$whereCondition = "`gallery` = {$gallery}";
 		}
-		return $this->model->getMultiple($whereCondition, 'sequence');
+		return parent::getList($whereCondition, 'sequence');
 	}
 	
 	public function postItem($path) {
@@ -36,7 +36,8 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 				$this->createThumbnail($targetFile, $upload_thumb_path.DIRECTORY_SEPARATOR.$fileName);
 				return parent::postItem(array(
 					'file' => $fileName,
-					'gallery' => 8
+					'gallery' => 8, // TODO: get ID via path
+					'upload' => time()
 				));
 			}
 			return SPG_Api_RestServer::HTTP_STATUS_400_BAD_REQUEST;

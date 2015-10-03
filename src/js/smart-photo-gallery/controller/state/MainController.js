@@ -1,10 +1,9 @@
 function MainController($scope, $state, Restangular, $http) {
 	// Get global config of the app (used to pass values from PHP)
-	if (window.spgAppConfig) {
-		$scope.appConfig = window.spgAppConfig;
-		window.spgAppConfig = undefined;
+	if (spgAppConfig) {
+		$scope.appConfig = spgAppConfig;
 	} else {
-		console.warn('No global configuration window.spgAppConfig');
+		console.warn('No global configuration spgAppConfig');
 	}
 
 	// Messages

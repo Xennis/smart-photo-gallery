@@ -3,11 +3,12 @@ function AddPhotosController($scope, $state, Restangular, $http) {
 	Dropzone.autoDiscover = false;
 	
 	var dropzone = new Dropzone('#dropzone', {
-		//maxFilesize: 2, // MB
-		url: 'http://xennis.de/smart-gallery/api/photos/?path='+$scope.path
+		url: Restangular.configuration.baseUrl+'/photos/?path='+$scope.path,
+		maxFilesize: $scope.appConfig.maximum_upload_file_size,
+		acceptedFiles: 'image/*'
 	});
 };
-	
+
 AddPhotosController.$inject = ['$scope', '$state', 'Restangular', '$http'];
 
 module.exports = AddPhotosController;

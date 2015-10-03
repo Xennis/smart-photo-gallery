@@ -26,15 +26,9 @@ function GalleriesController($scope, $state, Restangular, $http) {
 	
 	// Options to sort photos
 	$scope.sortableOptions = {
-		//'ui-floating': true,
-		//cursor: 'move',
-		//containment: 'parent',
-		//item: '> .gallery-item',
-//		stop: function(event, table) {
-//			jQuery('.spg-photozone .order').each(function(index) {
-//				jQuery(this).val(index);
-//			});
-//		}
+		cursor: 'move',
+		containment: 'parent',
+		placeholder: 'placeholder'
 	};
 	
 	$scope.postPhotos = function(photos) {

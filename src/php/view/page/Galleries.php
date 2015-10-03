@@ -7,9 +7,9 @@ class View_Page_Galleries {
 		$upload_url = $upload_url['baseurl'].DIRECTORY_SEPARATOR.SPG_NAME;
 		?>
 			<script>
-				window.spgAppConfig = {
+				var spgAppConfig = {
 					upload_url: '<?php echo $upload_url; ?>',
-					maximum_upload_file_size: '<?php echo size_format( wp_max_upload_size() ); ?>'
+					maximum_upload_file_size: '<?php echo floor(wp_max_upload_size() / 1000000); ?>'
 				};
 			</script>
 
