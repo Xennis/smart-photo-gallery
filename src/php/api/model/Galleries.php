@@ -17,21 +17,14 @@ class SPG_Api_Model_Galleries extends SPG_Api_Model_Common {
 	}
 	
 	public function getItemByCondition($file) {
-		// Split $file by delimeter and remove the last element
-		// e.g. "cars/bmw/1950" =>  ["cars", "bmw"]
-		$fileExplore = explode('/', $file);
-		array_pop($fileExplore);
-
-		// Create a strings to find all parent galleries and the gallery itself.
-		// e.g. $file + ["cars", "bmw"] => "'cars/bmw/1950', 'cars/bmw', 'cars'"
+		// Create a string to find all parent galleries and the gallery itself.
+		// e.g. "cars/bmw/1950" => "'cars/bmw/1950', 'cars/bmw', 'cars'"
 		$galleryFiles = "'{$file}'";
-		for($i = 0; $i < count($fileExplore); $i++) {
-			$galleryFiles .= ", '";
-			for($j = 0; $j < $i; $j++) {
-				$galleryFiles .= $fileExplore[$j]."/";
-			}
-			$galleryFiles .= $fileExplore[$i]."'";
+		while($pos = strrpos($file, '/')) {
+			$file = substr($file, 0, $pos);
+			$galleryFiles .= ", '{$file}'";
 		}
+		
 		// Query for the gallery and its parents by using the WHERE IN syntax.
 		$result = $this->model->getMultiple("`file` IN ({$galleryFiles})", "file", WPLDK_Database_Model::OUTPUT_TYPE_ARRAY_A);
 		// Get the gallery, which is the last element of the array since the

@@ -21,43 +21,20 @@ class SPG_Api_RestServer {
 	const ROUTE_GALLERIES = 'galleries';
 	const ROUTE_PHOTOS = 'photos';
 
-	private $args = array();
-	
-
-	public function __construct() {
-		$this->register_route(self::ROUTE_GALLERIES, array(
-			'method' => 'GET'
-		));
-	}	
-	
-	public function register_route($route, $args) {
-		$this->args[$route] = $args;
-	}
 
 	public function serve_request( $route = null ) {
 		require_once SPG_DIR.'/src/php/api/model/Common.php';
-		
 		$request = new SPG_Api_Request($route);
 		$response = new SPG_Api_Response();
-		if ($request->getRoute() == self::ROUTE_GALLERIES) {
-			require_once SPG_DIR.'/src/php/api/model/Galleries.php';
-			$model = new SPG_Api_Model_Galleries();
-			
-			switch ($request->getMethod()) {
-				case 'GET':
-					$response->setBody($model->getList($request->getParam('path')));
-					break;
-				case 'POST':
-					$response->setStatus($model->postItem($request->getBody()));
-					break;
-			}
-		}
-		else if($this->_startsWith($request->getRoute(), self::ROUTE_GALLERIES)) {
+		
+		// /galleries
+		if($this->_startsWith($request->getRoute(), self::ROUTE_GALLERIES)) {
 			require_once SPG_DIR.'/src/php/api/model/Galleries.php';
 			$model = new SPG_Api_Model_Galleries();
 			$id = $request->getRoute(1);
+
+			// /:id
 			if (is_numeric($id)) {
-				
 				switch ($request->getMethod()) {
 					case 'GET':
 						$response->setBody($model->getItem($id));
@@ -70,33 +47,35 @@ class SPG_Api_RestServer {
 						break;
 				}	
 			}
+			// /x
 			elseif ($id === 'x') {
-				$response->setBody($model->getItemByCondition($request->getParam('path')));
+				switch ($request->getMethod()) {
+					case 'GET':
+						$response->setBody($model->getItemByCondition($request->getParam('path')));
+						break;
+				}
+			}
+			//
+			elseif (empty ($id)) {
+				switch ($request->getMethod()) {
+					case 'GET':
+						$response->setBody($model->getList($request->getParam('path')));
+						break;
+					case 'POST':
+						$response->setStatus($model->postItem($request->getBody()));
+						break;
+				}
 			}
 		}
 		
-		else if($request->getRoute() == self::ROUTE_PHOTOS) {
-			require_once SPG_DIR.'/src/php/api/model/Photos.php';
-			$model = new SPG_Api_Model_Photos();
-			
-			switch ($request->getMethod()) {
-				case 'GET':
-					$response->setBody($model->getList($request->getParam('gallery')));
-					break;
-				case 'POST':
-					$response->setStatus($model->postItem($request->getParam('path')));
-					break;
-				case 'PUT':
-					$response->setBody($model->putItems($request->getBody()));
-					break;
-			}
-		}
+		// /photos
 		else if($this->_startsWith($request->getRoute(), self::ROUTE_PHOTOS)) {
 			require_once SPG_DIR.'/src/php/api/model/Photos.php';
 			$model = new SPG_Api_Model_Photos();
 			$id = $request->getRoute(1);
+			
+			// /:id
 			if (is_numeric($id)) {
-				
 				switch ($request->getMethod()) {
 					case 'GET':
 						$response->setBody($model->getItem($id));
@@ -108,6 +87,20 @@ class SPG_Api_RestServer {
 						$response->setStatus($model->deleteItem($id));
 						break;
 				}	
+			}
+			//
+			elseif (empty($id)) {
+				switch ($request->getMethod()) {
+					case 'GET':
+						$response->setBody($model->getList($request->getParam('gallery')));
+						break;
+					case 'POST':
+						$response->setStatus($model->postItem($request->getParam('path')));
+						break;
+					case 'PUT':
+						$response->setBody($model->putItems($request->getBody()));
+						break;
+				}
 			}
 		}		
 		
