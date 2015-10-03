@@ -3,10 +3,12 @@ var path = require("path");
 var webpack = require('webpack');
 
 module.exports = {
-	entry: './src/js/smart-photo-gallery/SmartPhotoGalleryModule.js',
+	entry: {
+		'smart-photo-gallery.back-end': './src/js/smart-photo-gallery/back-end/BackEndModule.js'
+	},
 	output: {
-		filename: 'smart-photo-gallery.min.js',
-		path: 'dist/'
+		path: 'dist/',
+		filename: '[name].min.js'
 	},
     module: {
         loaders: [

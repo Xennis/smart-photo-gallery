@@ -17,7 +17,7 @@ add_action('admin_menu', 'spg_admin_menu');
  * Page galleries
  */
 function spg_page_galleries() {
-	require_once(SPG_DIR . '/src/php/view/page/Galleries.php');
+	require_once(SPG_DIR_PHP_BACKEND.'/view/page/Galleries.php');
 	$view = new View_Page_Galleries();
 	$view->display();
 }
@@ -30,7 +30,7 @@ function spg_page_options() {
 	require_once(WPLDK_DIR . '/View/Settings/Common.php');
 	require_once(WPLDK_DIR . '/View/Settings/DatabaseTable.php');
 	
-	require_once(SPG_DIR . '/src/php/view/page/Settings.php');
+	require_once(SPG_DIR_PHP_BACKEND.'/view/page/Settings.php');
 	$view = new View_Page_Settings();
 	$view->display();
 }

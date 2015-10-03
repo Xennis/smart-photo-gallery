@@ -23,13 +23,13 @@ class SPG_Api_RestServer {
 
 
 	public function serve_request( $route = null ) {
-		require_once SPG_DIR.'/src/php/api/model/Common.php';
+		require_once SPG_DIR_PHP_BACKEND.'/api/model/Common.php';
 		$request = new SPG_Api_Request($route);
 		$response = new SPG_Api_Response();
 		
 		// /galleries
 		if($this->_startsWith($request->getRoute(), self::ROUTE_GALLERIES)) {
-			require_once SPG_DIR.'/src/php/api/model/Galleries.php';
+			require_once SPG_DIR_PHP_BACKEND.'/api/model/Galleries.php';
 			$model = new SPG_Api_Model_Galleries();
 			$id = $request->getRoute(1);
 
@@ -70,7 +70,7 @@ class SPG_Api_RestServer {
 		
 		// /photos
 		else if($this->_startsWith($request->getRoute(), self::ROUTE_PHOTOS)) {
-			require_once SPG_DIR.'/src/php/api/model/Photos.php';
+			require_once SPG_DIR_PHP_BACKEND.'/api/model/Photos.php';
 			$model = new SPG_Api_Model_Photos();
 			$id = $request->getRoute(1);
 			

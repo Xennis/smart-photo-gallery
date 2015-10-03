@@ -17,11 +17,16 @@ define('SPG_NAME', dirname(plugin_basename( __FILE__ )));
  */
 define('SPG_DIR', WP_PLUGIN_DIR.'/'.SPG_NAME);
 /**
+ * PHP back-end directory
+ */
+define('SPG_DIR_PHP_BACKEND', SPG_DIR.'/src/php/back-end');
+
+/**
  * WordPress Lightweight Develop Kit directory
  */
 define('WPLDK_DIR', SPG_DIR.'/lib/wpldk/src');
 
-require_once(SPG_DIR.'/src/php/helper.php');
+require_once(SPG_DIR_PHP_BACKEND.'/helper.php');
 
 /**
  * Register activation hook 
@@ -38,7 +43,7 @@ register_activation_hook( __FILE__, 'spg_register_activation' );
 function spg_admin_enqueue_scripts() {
     wp_enqueue_style(SPG_NAME.'-style', plugins_url('/dist/'.SPG_NAME.'.min.css', __FILE__));
 	wp_enqueue_script('angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js');
-    wp_enqueue_script(SPG_NAME.'-script', plugins_url('/dist/'.SPG_NAME.'.min.js', __FILE__), array('jquery-ui-sortable')); // TODO: dependency?
+    wp_enqueue_script(SPG_NAME.'.back-end-script', plugins_url('/dist/'.SPG_NAME.'.back-end.min.js', __FILE__), array('jquery-ui-sortable')); // TODO: dependency?
 }
 add_action('admin_enqueue_scripts', 'spg_admin_enqueue_scripts');
 

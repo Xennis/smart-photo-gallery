@@ -8,8 +8,8 @@ gulp.task('serve', ['styles', 'webpack'], function() {
     browserSync({
         port: config.port,
         server: {
-			baseDir: ['dist', 'example'],
-			index: 'index.html'
+			baseDir: config.baseDir,
+			index: config.index
 		},
         open: 'local'
     }, function (err, bs) {

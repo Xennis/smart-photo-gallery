@@ -13,7 +13,7 @@ class View_Page_Galleries {
 				};
 			</script>
 
-			<div class="wrap" ng-app="smart-photo-gallery">
+			<div class="wrap" ng-app="smart-photo-gallery.back-end">
 				<div ui-view></div>
 			</div><!-- .wrap -->
 		<?php		
