@@ -21,7 +21,7 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 				// TODO: move above code here
 			});
 		} else {
-			console.warn('postPhotos: no gallery id')
+			console.warn('postPhotos: no gallery id');
 		}
 	};
 	
@@ -57,13 +57,6 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 	$scope.photographers = [];
 	ApiFactory.getPhotographers(function(data) {
 		$scope.photographers = data;
-	}, function() {
-		console.warn('Request failed');
-	});	
-	
-	$scope.licences = [];
-	ApiFactory.getLicences(function(data) {
-		$scope.licences = data;
 	}, function() {
 		console.warn('Request failed');
 	});	

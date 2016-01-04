@@ -36,22 +36,21 @@ function MainController($scope, $state, ApiFactory, $http) {
 		{
 			state: 'photographers',
 			label: 'Photographers'
-		},
-		{
-			state: 'licences',
-			label: 'Licences'
 		}
 	];
 	$scope.navbarTabsCurrent = $state.current.name;
 	
 	//
 	$scope.showStates = function(state) {
+		// addPhotos
 		if (state === $scope.navbarTabs[1].state && $scope.path === '') {
-			return false;
-		}		
+//			return false;
+		}
+		// addGallery
 		else if (state === $scope.navbarTabs[2].state && $scope.gallery.depth >= 3) {
 			return false;
 		}
+		// editGallery
 		else if (state === $scope.navbarTabs[3].state && $scope.path === '') {
 			return false;
 		}

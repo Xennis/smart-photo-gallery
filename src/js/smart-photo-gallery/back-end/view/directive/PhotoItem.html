@@ -2,26 +2,24 @@
 	alt="{{item.id}}"
 	ng-src="{{filepath}}/{{item.file}}">
 <textarea
-	ng-model="item.description"></textarea>
-<select ng-show="showPhotographer" title="Select photographer">
+	ng-model="item.description"
+	placeholder="Enter a description ..."></textarea>
+<select
+	ng-model="item.photographer"
+	ng-show="showPhotographer"
+	title="Select photographer">
 	<option></option>
-	<option ng-repeat="item in photographers">{{item.name}}</option>
-</select>
-<select ng-show="showLicences" title="Select licence">
-	<option></option>
-	<option ng-repeat="item in licences">{{item.name}}</option>
+	<option
+		ng-repeat="item in photographers"
+		value="{{item.id}}">{{item.name}}</option>
 </select>
 <div class="options">
 	<span class="left">
-		<a title="Set location"><span class="dashicons dashicons-location-alt"></span></a>
-		<a ng-click="showPhotographer = !showPhotographer" title="Select photographer"><span class="dashicons dashicons-admin-users"></span></a>
-		<a ng-click="showLicences = !showLicences" title="Select licence"><span class="dashicons dashicons-admin-page"></span></a>
+		<a ng-click="showPhotographer = !showPhotographer" title="Select photographer">
+			<span class="dashicons dashicons-admin-users"></span>
+		</a>
 	</span>
 	<span class="right">
-		<a ng-click="showMenu = !showMenu" title="Show menu"><span class="dashicons dashicons-menu"></span></a>
+		<a title="Delete photo"><span class="dashicons dashicons-trash"></span></a>
 	</span>
-	<ul class="menu" ng-show="showMenu">
-		<li><a href="">Set as thumbnail</a></li>
-		<li><a href="">Delete</a></li>
-	</ul>
 </div>

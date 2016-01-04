@@ -34,14 +34,7 @@ abstract class SPG_Config_Db {
 			`id` smallint(3) NOT NULL AUTO_INCREMENT,
 			`name` varchar(60) NOT NULL,
 			PRIMARY KEY (`id`)
-		");		
-		
-		(new WPLDK_Database_Model('licences'))->createTable("
-			`id` int(11) NOT NULL AUTO_INCREMENT,
-			`name` varchar(60) NOT NULL,
-			`link` varchar(100) NOT NULL,
-			PRIMARY KEY (`id`)
-		");
+		");	
 		
 	}
 }

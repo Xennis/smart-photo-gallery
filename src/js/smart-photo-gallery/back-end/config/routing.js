@@ -62,12 +62,6 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 		template: require('../view/state/main/photographers.html'),
 		controller: require('../controller/state/main/PhotographersController')	
 	})
-	.state('licences', {
-		parent: 'main',
-		url: '/licences/',
-		template: require('../view/state/main/licences.html'),
-		controller: require('../controller/state/main/LicencesController')	
-	})
 	;		
 }
 
