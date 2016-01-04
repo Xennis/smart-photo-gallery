@@ -1,8 +1,5 @@
 {
     "require": {
 		"abeautifulsite/simpleimage": "~2.5.5"
-	},
-    "require-dev": {
-		"phpunit/phpunit": "4.8.*"
-    }
+	}
 }

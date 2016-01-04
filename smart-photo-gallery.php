@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Smart Photo Gallery
-Plugin URI: 
+Plugin URI: https://github.com/XennisBlog/smart-photo-gallery
 Description: 
 Version: 0.0.1
 Author: Xennis
@@ -32,8 +32,8 @@ require_once(SPG_DIR_PHP_BACKEND.'/helper.php');
  * Register activation hook 
  */
 function spg_register_activation() {
-	//require_once(SPG_DIR . '/src/php/config/Db.php');
-	//SPG_Config_Db::__setup_database_tables();
+	require_once(SPG_DIR . '/src/php/config/Db.php');
+	SPG_Config_Db::__setup_database_tables();
 }
 register_activation_hook( __FILE__, 'spg_register_activation' );
 
@@ -74,7 +74,7 @@ add_action('wp_enqueue_scripts', 'spg_enqueue_scripts');
  * @param array $links
  */
 function spg_plugin_action_links( $links ) {
-   $links[] = '<a href="'.admin_url('admin.php?page=spg-settings').'">Settings</a>';
+   $links[] = '<a href="'.admin_url('admin.php?page=spg-settings').'">'.__('Settings').'</a>';
    return $links;
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'spg_plugin_action_links');

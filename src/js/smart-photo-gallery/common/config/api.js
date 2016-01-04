@@ -5,7 +5,7 @@
  * @param {Object} RestangularProvider From restangular
  */
 function api(RestangularProvider) {
-	RestangularProvider.setBaseUrl('http://xennis.de/smart-gallery/api/');	
+	RestangularProvider.setBaseUrl('/smart-gallery/api/');	
 };
 	
 api.$inject = ['RestangularProvider'];
