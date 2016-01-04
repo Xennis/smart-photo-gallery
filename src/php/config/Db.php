@@ -26,6 +26,7 @@ abstract class SPG_Config_Db {
 			`description` text NOT NULL,
 			`gallery` smallint(4) NOT NULL,
 			`sequence` smallint(3) NOT NULL DEFAULT '999',
+			`upload` int(10) NOT NULL,
 			PRIMARY KEY (`id`)
 		");
 		
