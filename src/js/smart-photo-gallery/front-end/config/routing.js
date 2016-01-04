@@ -13,7 +13,7 @@ function routing($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider)
 	// Set up the state
 	$stateProvider
 	.state('main', {
-		url: '/',
+		url: '/?:page&:num&:sort',
 		template: require('../view/state/main.html'),
 		controller: require('../controller/state/MainController')
 	})

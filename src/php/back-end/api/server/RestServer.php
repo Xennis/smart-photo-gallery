@@ -11,6 +11,7 @@ class SPG_Api_RestServer {
 	const HTTP_STATUS_403_FORBIDDEN = 403;
 	const HTTP_STATUS_404_NOT_FOUND = 404;
 	// Response header parameter names
+	const HEADER_ACCESS_CONTROL_EXPOSE_HEADERS  = 'Access-Control-Expose-Headers';
 	const HEADER_CONTENT_TYPE = 'Content-Type';
 	const HEADER_X_TOTAL_COUNT = 'X-Total-Count';
 	// Response header parameter values

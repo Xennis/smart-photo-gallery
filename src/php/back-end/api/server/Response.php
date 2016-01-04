@@ -20,6 +20,7 @@ class SPG_Api_Response {
 	}
 	
 	public function setBody($value) {
+		//$this->setHeader(SPG_Api_RestServer::HEADER_ACCESS_CONTROL_EXPOSE_HEADERS, SPG_Api_RestServer::HEADER_X_TOTAL_COUNT);
 		$this->setHeader(SPG_Api_RestServer::HEADER_CONTENT_TYPE, SPG_Api_RestServer::HEADER_CONTENT_TYPE_JSON);
 
 		$this->body = json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);	

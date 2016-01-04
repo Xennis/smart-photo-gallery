@@ -5,7 +5,8 @@
  * @param {Object} RestangularProvider From restangular
  */
 function api(RestangularProvider) {
-	RestangularProvider.setBaseUrl('http://dev.miros-truckstop.de/smart-gallery/api/');	
+	RestangularProvider.setBaseUrl('http://dev.miros-truckstop.de/smart-gallery/api/');
+	RestangularProvider.setFullResponse(true);
 };
 	
 api.$inject = ['RestangularProvider'];

@@ -4,8 +4,8 @@ function ApiFactory(Restangular) {
 		getGallery: function(path, success, failure) {
 			Restangular.one('galleries', 'x').get({
 				path: path
-			}).then(function (data) {
-				success(data);
+			}).then(function (response) {
+				success(response.data);
 			}, function () {
 				failure();
 			});
@@ -14,26 +14,24 @@ function ApiFactory(Restangular) {
 		getGalleries: function(path, success, failure) {
 			Restangular.all('galleries').getList({
 				path: path
-			}).then(function(data) {
-				success(data);
+			}).then(function(response) {
+				success(response.data);
 			}, function() {
 				failure();
 			});			
 		},
 		
-		getPhotos: function(galleryId, success, failure) {
-			Restangular.all('photos').getList({
-				gallery: galleryId
-			}).then(function(data) {
-				success(data);
+		getPhotos: function(params, success, failure) {
+			Restangular.all('photos').getList(params).then(function(response) {
+				success(response.data, response.headers('x-total-count'));
 			}, function() {
 				failure();
 			});
 		},
 		
 		getPhotographers: function(success, failure) {
-			Restangular.all('photographers').getList().then(function(data) {
-				success(data);
+			Restangular.all('photographers').getList().then(function(response) {
+				success(response.data);
 			}, function() {
 				failure();
 			});

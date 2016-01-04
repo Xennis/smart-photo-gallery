@@ -26,7 +26,7 @@ class SPG_Api_Model_Galleries extends SPG_Api_Model_Common {
 		}
 		
 		// Query for the gallery and its parents by using the WHERE IN syntax.
-		$result = $this->model->getMultiple("`file` IN ({$galleryFiles})", "file", WPLDK_Database_Model::OUTPUT_TYPE_ARRAY_A);
+		$result = $this->model->getMultiple("`file` IN ({$galleryFiles})", "file", NULL, NULL, WPLDK_Database_Model::OUTPUT_TYPE_ARRAY_A);
 		// Get the gallery, which is the last element of the array since the
 		// quere was ordered ascend by the file column.
 		$gallery = array_pop($result);

@@ -15,27 +15,50 @@ function MainController($scope, $state, ApiFactory, $http) {
 		id: undefined,
 		depth: undefined
 	};
-	$scope.photos = [];
-	ApiFactory.getGallery($scope.path, function(gallery) {
-		$scope.gallery = gallery;
-		
-		ApiFactory.getPhotos($scope.gallery.id, function(data) {
+	
+	// Get routing params
+	
+	var sort = $state.params.sort;
+	if (sort === 'sequence' || sort === 'sequence-desc') {
+		$scope.sort = sort;
+	} else {
+		$scope.sort = 'sequence';
+	}
+	var num = $state.params.num;
+	if (num == 5 || num == 10 || num == 15) {
+		$scope.num = num;
+	} else {
+		$scope.num = 10;
+	}
+	
+	$scope.getPhotos = function() {
+		ApiFactory.getPhotos({
+			gallery: $scope.gallery.id,
+			order: $scope.sort,
+			limit: $scope.num
+		}, function(data) {
 			$scope.photos = data;
 		}, function() {
 			console.warn('Request failed');
-		});
-		
+		});		
+	};
+	
+	$scope.photos = [];
+	ApiFactory.getGallery($scope.path, function(gallery) {
+		$scope.gallery = gallery;
+		$scope.getPhotos();
 	}, function() {
 		console.warn('Request failed');
 	});
 	
+	
 	// Request galleries
-	$scope.galleries = [];
-	ApiFactory.getGalleries($scope.path, function(galleries) {
-		$scope.galleries = galleries;
-	}, function() {
-		console.warn('Request failed');
-	});
+//	$scope.galleries = [];
+//	ApiFactory.getGalleries($scope.path, function(galleries) {
+//		$scope.galleries = galleries;
+//	}, function() {
+//		console.warn('Request failed');
+//	});
 };
 	
 MainController.$inject = ['$scope', '$state', 'ApiFactory', '$http'];

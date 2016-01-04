@@ -1,5 +1,19 @@
 <h2>Gallery: {{gallery.name}}</h2>
 
+<select
+	ng-model="sort"
+	ng-click="getPhotos()">
+	<option value="sequence">sequence</option>
+	<option value="sequence-desc">sequence-desc</option>
+</select>
+<select
+	ng-model="num"
+	ng-click="getPhotos()">
+	<option value="5">5</option>
+	<option value="10">10</option>
+	<option value="15">15</option>
+</select>
+
 <nav class="gallery-breadcrumb">
 	<ul ng-if="path">
 		<li>Pfad:&nbsp;<a 

@@ -46,7 +46,7 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 	$scope.photos = [];
 	$scope.$watch('gallery', function() {
 		if ($scope.gallery.id) {
-			ApiFactory.getPhotos($scope.gallery.id, function(data) {
+			ApiFactory.getPhotos({gallery: $scope.gallery.id}, function(data) {
 				$scope.photos = data;
 			}, function() {
 				console.warn('Request failed');
