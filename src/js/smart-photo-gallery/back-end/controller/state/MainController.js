@@ -44,7 +44,7 @@ function MainController($scope, $state, ApiFactory, $http) {
 	$scope.showStates = function(state) {
 		// addPhotos
 		if (state === $scope.navbarTabs[1].state && $scope.path === '') {
-//			return false;
+			return false;
 		}
 		// addGallery
 		else if (state === $scope.navbarTabs[2].state && $scope.gallery.depth >= 3) {
@@ -58,7 +58,11 @@ function MainController($scope, $state, ApiFactory, $http) {
 	};
 	
 	// Get routing params
-	$scope.path = $state.params.path;
+	if ($state.params.path) {
+		$scope.path = $state.params.path;
+	} else {
+		$scope.path = '';
+	}
 	// Request gallery data
 	$scope.gallery = {
 		id: undefined,
