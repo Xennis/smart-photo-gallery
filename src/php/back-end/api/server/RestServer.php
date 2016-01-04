@@ -79,9 +79,9 @@ class SPG_Api_RestServer {
 			// /:id
 			if (is_numeric($id)) {
 				switch ($request->getMethod()) {
-					case 'GET':
-						$response->setBody($model->getItem($id));
-						break;
+//					case 'GET':
+//						$response->setBody($model->getItem($id));
+//						break;
 					case 'PUT':
 						$response->setStatus($model->putItem($request->getBody(), $id));
 						break;
@@ -106,36 +106,6 @@ class SPG_Api_RestServer {
 			}
 		}		
 		
-		// /licenses
-		else if($this->_startsWith($request->getRoute(), self::ROUTE_LICENCES)) {
-			require_once SPG_DIR_PHP_BACKEND.'/api/model/Licences.php';
-			$model = new SPG_Api_Model_Licences();
-			$id = $request->getRoute(1);
-
-			// /:id
-			if (is_numeric($id)) {
-				switch ($request->getMethod()) {
-					//case 'DELETE':
-					//	$response->setStatus($model->deleteItem($id));
-					//	break;
-				}	
-			}
-			//
-			elseif (empty ($id)) {
-				switch ($request->getMethod()) {
-					case 'GET':
-						$response->setBody($model->getList());
-						break;
-					case 'POST':
-						$response->setStatus($model->postItem($request->getBody()));
-						break;
-					case 'PUT':
-						$response->setBody($model->putItems($request->getBody()));
-						break;
-				}
-			}
-		}
-
 		// /photographers
 		else if($this->_startsWith($request->getRoute(), self::ROUTE_PHOTOGRAPHER)) {
 			require_once SPG_DIR_PHP_BACKEND.'/api/model/Photographers.php';

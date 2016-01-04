@@ -4,8 +4,8 @@ abstract class SPG_Api_Model_Common {
 	
 	protected $model;
 	
-	public function __construct($model) {
-		$this->model = new WPLDK_Database_Model($model);
+	public function __construct($model, array $foreignKeys = []) {
+		$this->model = new WPLDK_Database_Model($model, $foreignKeys);
 	}
 	
 	public function getList($whereCondition = NULL, $orderBy = NULL) {

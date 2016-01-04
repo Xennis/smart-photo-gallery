@@ -7,34 +7,40 @@ class WPLDK_Database_Model {
 	const OUTPUT_TYPE_ARRAY_A = 'ARRAY_A';
 
 	private $table;
+	private $joins = '';
 	
 	/**
 	 * 
 	 * @param string $table
+	 * @param null|array $foreignKeys
 	 * @return CURD_Model
 	 */
-	public function __construct($table) {
+	public function __construct($table, array $foreignKeys = []) {
 		global $wpdb;
-		$this->table = $wpdb->prefix.self::PREFIX.$table;
+		$prefix = $wpdb->prefix.self::PREFIX;
+		$this->table = $prefix.$table;
+		foreach ($foreignKeys as $key) {
+			$this->jointTable($prefix.$key.'s', $key); // 's' because of plural form
+		}
 		return $this;
 	}
-
+	
 	public function get($whereCondition, $output_type = self::OUTPUT_TYPE_OBJECT) {
 		global $wpdb;
 		return $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE ".$whereCondition, $output_type);
 	}
 	
 	public function getMultiple($whereCondition = NULL, $orderBy = NULL, $output_type = self::OUTPUT_TYPE_OBJECT) {
-		global $wpdb;
-		
-		$body = "";
+		$query = "SELECT * FROM `{$this->table}` {$this->joins}";
 		if ($whereCondition) {
-			$body .= " WHERE ".$whereCondition;
+			$query .= " WHERE ".$whereCondition;
 		}
 		if ($orderBy) {
-			$body .= " ORDER BY `{$orderBy}`";
+			$query .= " ORDER BY `{$orderBy}`";
 		}
-		return $wpdb->get_results("SELECT * FROM `{$this->table}` ".$body, $output_type);
+
+		global $wpdb;		
+		return $wpdb->get_results($query, $output_type);
 	}
 	
 	/**
@@ -103,6 +109,10 @@ class WPLDK_Database_Model {
 		
 		$sql = "CREATE TABLE IF NOT EXISTS `".$this->table."` ($sql) $charset_collate;";	
 		$wpdb->query($sql);
+	}
+	
+	private function jointTable($table, $field) {
+		$this->joins .= " LEFT JOIN `{$table}` ON `{$table}`.id = `{$this->table}`.{$field}";
 	}
 	
 }
