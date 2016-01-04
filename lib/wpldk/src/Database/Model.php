@@ -30,15 +30,25 @@ class WPLDK_Database_Model {
 		return $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE ".$whereCondition, $output_type);
 	}
 	
-	public function getMultiple($whereCondition = NULL, $orderBy = NULL, $output_type = self::OUTPUT_TYPE_OBJECT) {
+	public function getMultiple($whereCondition = NULL, $order = NULL, $limit = NULL, $offset = NULL, $output_type = self::OUTPUT_TYPE_OBJECT) {
 		$query = "SELECT * FROM `{$this->table}` {$this->joins}";
 		if ($whereCondition) {
 			$query .= " WHERE ".$whereCondition;
 		}
-		if ($orderBy) {
-			$query .= " ORDER BY `{$orderBy}`";
+		if ($order) {
+			$order = explode('-', $order);
+			$query .= " ORDER BY `{$order[0]}`";
+			
+			if (count($order) == 2 && $order[1] === 'desc') {
+				$query .= " DESC";
+			}
 		}
-
+		if ($limit) {
+			$query .= " LIMIT {$limit}";
+			if ($offset) {
+				$query .= " OFFSET {$offset}";
+			}
+		}
 		global $wpdb;		
 		return $wpdb->get_results($query, $output_type);
 	}

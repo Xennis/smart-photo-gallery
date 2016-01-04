@@ -94,7 +94,7 @@ class SPG_Api_RestServer {
 			elseif (empty($id)) {
 				switch ($request->getMethod()) {
 					case 'GET':
-						$response->setBody($model->getList($request->getParam('gallery')));
+						$response->setBody($model->getList($request->getParam('gallery'), $request->getParam('order'), $request->getParam('limit'), $request->getParam('offset')));
 						break;
 					case 'POST':
 						$response->setStatus($model->postItem($request->getParam('path')));

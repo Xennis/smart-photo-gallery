@@ -12,11 +12,14 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 	 * @param null|string|int $galleryId ID of a gallery
 	 * @return type
 	 */
-	public function getList($galleryId = NULL) {
+	public function getList($galleryId = NULL, $order = NULL, $limit = NULL, $offset = NUll) {
 		if ($galleryId) {
 			$whereCondition = "`gallery` = {$galleryId}";
 		}
-		return parent::getList($whereCondition, 'sequence');
+		if (!$order) {
+			$order = 'sequence';
+		}
+		return parent::getList($whereCondition, $order, $limit, $offset);
 	}
 	
 	/**

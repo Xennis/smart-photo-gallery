@@ -8,8 +8,8 @@ abstract class SPG_Api_Model_Common {
 		$this->model = new WPLDK_Database_Model($model, $foreignKeys);
 	}
 	
-	public function getList($whereCondition = NULL, $orderBy = NULL) {
-		return $this->model->getMultiple($whereCondition, $orderBy);
+	public function getList($whereCondition = NULL, $order = NULL, $limit = NULL, $offset = NUll) {
+		return $this->model->getMultiple($whereCondition, $order, $limit, $offset);
 	}
 	
 	public function getItem($id) {
