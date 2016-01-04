@@ -13,7 +13,7 @@
 ```
 composer install
 npm install
-composer install
+bower install
 ```
 
 **Run**
