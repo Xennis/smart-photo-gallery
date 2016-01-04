@@ -10,15 +10,10 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 	
 	$scope.postPhotos = function(photos) {
 		if ($scope.gallery.id) {
-			Restangular.all('photos').customPUT(photos).then(function(data) {
-				console.log(data);
-				if (data) {
-					$scope.adminNotice('updated', 'Saved changes');					
-				} else {
-					$scope.adminNotice('error', 'Failed to save changes ' + data);					
-				}
-			}, function(data) {
-				// TODO: move above code here
+			Restangular.all('photos').customPUT(photos).then(function() {
+				$scope.adminNotice('updated', 'Saved changes');					
+			}, function(response) {
+				$scope.adminNotice('error', 'Failed to save photos with ID: ' + response.data);
 			});
 		} else {
 			console.warn('postPhotos: no gallery id');

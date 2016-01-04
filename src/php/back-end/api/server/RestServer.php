@@ -104,7 +104,13 @@ class SPG_Api_RestServer {
 						$response->setStatus($model->postItem($request->getParam('path')));
 						break;
 					case 'PUT':
-						$response->setBody($model->putItems($request->getBody()));
+						$body = $model->putItems($request->getBody());
+						if ($body === true) {
+							$response->setStatus(self::HTTP_STATUS_202_ACCEPTED);
+						} else {
+							$response->setStatus(self::HTTP_STATUS_400_BAD_REQUEST);
+							$response->setBody($body);
+						}
 						break;
 				}
 			}

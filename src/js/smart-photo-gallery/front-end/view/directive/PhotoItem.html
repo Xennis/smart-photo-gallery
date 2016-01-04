@@ -1,7 +1,6 @@
-<img
-	alt="{{item.id}}"
-	ng-src="{{filepath}}/{{item.file}}">
-<br>
-<span ng-if="item.name">Photographer: {{item.name}} | </span>
-Upload: {{item.upload * 1000}}
-<div class="description">{{item.description}}</div>
+<p>
+	<img ng-src="{{filepath}}/{{item.file}}"><br>
+	<span ng-if="item.name"><b>Photographer:</b>&nbsp;{{item.name}}&nbsp;|&nbsp;</span>
+	<b>Upload:</b>&nbsp;{{item.upload * 1000}}
+</p>
+<p><span itemprop="description">{{item.description}}</span></p>

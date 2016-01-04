@@ -37,11 +37,13 @@
 			<gallery-item item="item" /></gallery-item>
 		</li>
 	</ul><!-- .gallery -->
-	<ul class="photo">
-		<li ng-repeat="item in photos | limitTo:photosLimit">
+		<div
+			class="photo"
+			itemscope itemtype="http://schema.org/ImageObject"
+			ng-repeat="item in photos | limitTo:photosLimit">
 			<photo-item
-				filepath="{{appConfig.upload_url}}/thumb/{{gallery.file}}"
+				filepath="{{appConfig.upload_url}}/{{gallery.file}}"
 				item="item"></photo-item>
-		</li>
-	</ul><!-- .photo -->
+		</div>
+	<!-- .photo -->
 </div><!-- .main -->

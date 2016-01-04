@@ -122,7 +122,8 @@ class WPLDK_Database_Model {
 	}
 	
 	private function jointTable($table, $field) {
-		$this->joins .= " LEFT JOIN `{$table}` ON `{$table}`.id = `{$this->table}`.{$field}";
+		// convention: cars.car_id = MY-TABLE.car
+		$this->joins .= " LEFT JOIN `{$table}` ON `{$table}`.{$field}_id = `{$this->table}`.{$field}";
 	}
 	
 }
