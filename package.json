@@ -1,22 +1,22 @@
 {
-  "name": "wp-smart-photo-gallery",
-  "version": "0.1.0",
-  "devDependencies": {
-    "browser-sync": "*",
-    "gulp": "*",
-	"gulp-concat": "*",
-    "gulp-less": "*",
-    "gulp-load-plugins": "*",
-	"gulp-minify-css": "*",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "*",	
-    "gulp-size": "*",
-	"gulp-uglify": "*",
-    "gulp-util": "^3.0.6",
-    "opn": "*",
-	"require-dir": "",
-	"url": "*",
-	"webpack": "*",
-	"html-loader": "*"
-  }
+	"name": "wp-smart-photo-gallery",
+	"version": "0.1.0",
+	"devDependencies": {
+		"browser-sync": "2.13.x",
+		"gulp": "3.9.x",
+		"gulp-clean-css": "2.0.x",
+		"gulp-concat": "2.6.x",
+		"gulp-less": "3.1.x",
+		"gulp-load-plugins": "1.2.x",
+		"gulp-notify": "2.2.x",
+		"gulp-rename": "1.2.x",
+		"gulp-size": "2.1.x",
+		"gulp-uglify": "1.5.x",
+		"gulp-util": "3.0.x",
+		"html-loader": "0.4.x",
+		"opn": "4.0.x",
+		"require-dir": "0.3.x",
+		"url": "0.11.x",
+		"webpack": "1.13.x"
+	}
 }

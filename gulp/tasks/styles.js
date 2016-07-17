@@ -14,7 +14,7 @@ gulp.task('styles', function () {
 		.pipe($.rename({
 			  suffix: '.min'
 		}))
-		.pipe($.minifyCss())
+		.pipe($.cleanCss({compatibility: 'ie8'}))
         .pipe(gulp.dest(config.dest))
 		.pipe(browserSync.reload({stream: true}))
 		//.pipe($.size())

@@ -1,5 +1,5 @@
 {
-    "require": {
+	"require": {
 		"abeautifulsite/simpleimage": "~2.5.5"
 	}
 }
