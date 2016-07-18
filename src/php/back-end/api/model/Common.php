@@ -16,6 +16,10 @@ abstract class SPG_Api_Model_Common {
 		return $this->model->get("`id` = '{$id}'");
 	}
 	
+	public function getTotalCount($whereCondition = NULL) {
+		return $this->model->count($whereCondition);
+	}
+
 	public function postItem(array $data) {
 		$result = $this->model->insert($data);			
 		if ($result === false) {

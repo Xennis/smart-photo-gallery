@@ -4,7 +4,7 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 	const THUMB_DIR = 'thumb';
 	
 	public function __construct() {
-		parent::__construct('photos', ['photographer']);
+		parent::__construct('photos');
 	}
 	
 	/**
@@ -22,6 +22,13 @@ class SPG_Api_Model_Photos extends SPG_Api_Model_Common {
 		return parent::getList($whereCondition, $order, $limit, $offset);
 	}
 	
+	public function getTotalCount($galleryId = NULL) {
+		if ($galleryId) {
+			$whereCondition = "`gallery` = {$galleryId}";
+		}
+		return parent::getTotalCount($whereCondition);
+	}
+
 	/**
 	 * 
 	 * @param string $galleryPath Path of gallery, e.g. car/bmw/1950

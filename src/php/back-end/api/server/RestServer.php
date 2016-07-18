@@ -96,8 +96,8 @@ class SPG_Api_RestServer {
 				switch ($request->getMethod()) {
 					case 'GET':
 						$body = $model->getList($request->getParam('gallery'), $request->getParam('order'), $request->getParam('limit'), $request->getParam('offset'));
-						// may use $wpdb->num_rows instead of count?
-						$response->setHeader(self::HEADER_X_TOTAL_COUNT, count($body));
+						$totalCount = $model->getTotalCount($request->getParam('gallery'));
+						$response->setHeader(self::HEADER_X_TOTAL_COUNT, $totalCount);
 						$response->setBody($body);
 						break;
 					case 'POST':

@@ -8,10 +8,10 @@
 </select>
 <select
 	ng-model="num"
-	ng-click="getPhotos()">
-	<option value="5">5</option>
-	<option value="10">10</option>
-	<option value="15">15</option>
+	ng-click="changeNum()">
+	<option value=5>5</option>
+	<option value=10>10</option>
+	<option value=15>15</option>
 </select>
 
 <nav class="gallery-breadcrumb">
@@ -28,6 +28,15 @@
 	</ul>
 	<div>&nbsp;</div>
 </nav><!-- .gallery-breadcrumb -->
+
+
+<uib-pagination
+	ng-model="page"
+	ng-change="getPhotos()"
+	total-items="totalItems"
+	items-per-page="num"
+	max-size="5"
+	force-ellipses="true" ></uib-pagination>
 
 <div class="main"
 	infinite-scroll="onPageBottom()"

@@ -53,6 +53,15 @@ class WPLDK_Database_Model {
 		return $wpdb->get_results($query, $output_type);
 	}
 	
+	public function count($whereCondition = NULL) {
+		$query = "SELECT COUNT(*) FROM `{$this->table}`";
+		if ($whereCondition) {
+			$query .= " WHERE ".$whereCondition;
+		}
+		global $wpdb;
+		return $wpdb->get_var($query);
+	}
+
 	/**
 	 * 
 	 * @global type $wpdb

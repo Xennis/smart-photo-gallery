@@ -17,27 +17,50 @@ function MainController($scope, $state, ApiFactory, $http) {
 	};
 	
 	// Get routing params
-	
 	var sort = $state.params.sort;
 	if (sort === 'sequence' || sort === 'sequence-desc') {
 		$scope.sort = sort;
 	} else {
 		$scope.sort = 'sequence';
 	}
+	
 	var num = $state.params.num;
-	if (num == 5 || num == 10 || num == 15) {
+	if (num === '5' || num === '10' || num === '15') {
 		$scope.num = num;
 	} else {
 		$scope.num = 10;
 	}
 	
+	var page = $state.params.page;
+	if (isNaN(page)) {
+		$scope.page = 1;
+	} else {
+		$scope.page = parseInt(page);
+	}
+	
+	$scope.changeNum = function() {
+		// TODO: Maybe improve this implementation
+		$scope.page = 1;
+		$scope.getPhotos();
+	};
+
 	$scope.getPhotos = function() {
+		$state.transitionTo('main', {
+			page: $scope.page,
+			num: $scope.num,
+			sort: $scope.sort
+		}, {
+			notify: false
+		});
+
 		ApiFactory.getPhotos({
 			gallery: $scope.gallery.id,
 			order: $scope.sort,
-			limit: $scope.num
-		}, function(data) {
+			limit: $scope.num,
+			offset: ($scope.page - 1) * $scope.num	
+		}, function(data, totalItems) {
 			$scope.photos = data;
+			$scope.totalItems = totalItems;
 		}, function() {
 			console.warn('Request failed');
 		});		
