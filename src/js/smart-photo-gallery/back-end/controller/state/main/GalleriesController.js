@@ -20,6 +20,14 @@ function GalleriesController($scope, $state, Restangular, ApiFactory) {
 		}
 	};
 	
+	$scope.deleteGallery = function(id) {
+		ApiFactory.deleteGallery(id, function() {
+			console.log('yes');
+		}, function() {
+			console.log('no');
+		});
+	};
+
 	$scope.photosLimit = 8;
 	// Endless scroll
 	$scope.onPageBottom = function() {

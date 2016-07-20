@@ -1,8 +1,12 @@
 function ApiFactory(Restangular) {
-		
+
+	var galleriesEndpoint = 'galleries';
+	var photosEndpoint = 'photos';
+	var photographersEndpoint = 'photographers';
+
 	return {
 		getGallery: function(path, success, failure) {
-			Restangular.one('galleries', 'x').get({
+			Restangular.one(galleriesEndpoint, 'x').get({
 				path: path
 			}).then(function (response) {
 				success(response.data);
@@ -12,7 +16,7 @@ function ApiFactory(Restangular) {
 		},
 		
 		getGalleries: function(path, success, failure) {
-			Restangular.all('galleries').getList({
+			Restangular.all(galleriesEndpoint).getList({
 				path: path
 			}).then(function(response) {
 				success(response.data);
@@ -21,8 +25,16 @@ function ApiFactory(Restangular) {
 			});			
 		},
 		
+		deleteGallery: function(id, success, failure) {
+			Restangular.one(galleriesEndpoint, id).remove().then(function() {
+				success();
+			}, function() {
+				failure();
+			});
+		},
+
 		getPhotos: function(params, success, failure) {
-			Restangular.all('photos').getList(params).then(function(response) {
+			Restangular.all(photosEndpoint).getList(params).then(function(response) {
 				success(response.data, response.headers('x-total-count'));
 			}, function() {
 				failure();
@@ -30,7 +42,7 @@ function ApiFactory(Restangular) {
 		},
 		
 		getPhotographers: function(success, failure) {
-			Restangular.all('photographers').getList().then(function(response) {
+			Restangular.all(photographersEndpoint).getList().then(function(response) {
 				success(response.data);
 			}, function() {
 				failure();

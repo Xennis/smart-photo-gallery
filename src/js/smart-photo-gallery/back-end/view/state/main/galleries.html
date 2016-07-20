@@ -3,7 +3,7 @@
 	infinite-scroll-distance="1">
 	<ul class="gallery">
 		<li ng-repeat="item in galleries">
-			<gallery-item item="item" /></gallery-item>
+			<gallery-item item="item" delete="deleteGallery(id)" /></gallery-item>
 		</li>
 	</ul><!-- .gallery -->
 	<form ng-submit="postPhotos(photos)">		

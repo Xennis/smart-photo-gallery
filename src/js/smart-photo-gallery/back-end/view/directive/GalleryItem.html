@@ -4,3 +4,8 @@
 		ui-sref-opts="{reload: true}">{{item.name}}</a>
 </h5>
 <p class="gallery-description">{{item.description | limitTo:50}}{{item.description.length > 50 ? '...' : ''}}</p>
+<div class="options">
+	<span class="right">
+		<a title="Delete gallery" ng-click="deleteGallery(item.id)"><span class="dashicons dashicons-trash"></span></a>
+	</span>
+</div>
