@@ -5,13 +5,13 @@ var config = require('../config').serve,
 	$ = require('gulp-load-plugins')();
 
 gulp.task('serve', ['styles', 'webpack'], function() {
-    browserSync({
-        port: config.port,
-        server: {
+	browserSync({
+		port: config.port,
+		server: {
 			baseDir: config.baseDir,
 			index: config.index
 		},
-        open: 'local'
-    }, function (err, bs) {
-    });
+		open: 'local'
+	}, function (err, bs) {
+	});
 });
