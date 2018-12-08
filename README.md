@@ -1,8 +1,8 @@
-# Smart-Photo-Gallery (WordPress Plugin)
+# Smart Photo Gallery (WordPress Plugin)
+
+[![Build Status](https://travis-ci.org/Xennis/smart-photo-gallery.svg?branch=master)](https://travis-ci.org/Xennis/smart-photo-gallery)
 
 ### Development
-
-**Install tools**
 
 Requirements
 * Composer (PHP) is installed
