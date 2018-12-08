@@ -3,16 +3,10 @@
 ###########
 
 dist/
-*.lock
+composer.lock
+package-lock.json
 
 # Bower, Node and Composer directories
 bower_components/
 node_modules/
 vendor/
-
-###########
-# IDE
-###########
-
-# Netbeans
-nbproject/

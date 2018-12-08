@@ -4,20 +4,18 @@
 
 **Install tools**
 
-* Composer (PHP)
-* npm
-* bower (`npm install -g bower`)
+Requirements
+* Composer (PHP) is installed
+* npm is installed
 
-**Install dependencies**
-
-```
+Install the dependencies
+```sh
 composer install
 npm install
-bower install
+./node_modules/bower/bin/bower install
 ```
 
-**Run**
-
-```
-gulp
+Watch changes
+```sh
+./node_modules/gulp/bin/gulp.js
 ```
