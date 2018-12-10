@@ -12,7 +12,7 @@ class SPG_Api_Request {
 		if (is_numeric($part)) {
 			return explode("/", $this->route)[$part];
 		} else {
-			return $this->route;			
+			return $this->route;
 		}
 	}
 	
@@ -22,7 +22,6 @@ class SPG_Api_Request {
 	
 	public function getParam($param) {
 		return $_GET[$param];
-//		return json_decode($_REQUEST[$param], true);
 	}
 	
 	public function getBody() {

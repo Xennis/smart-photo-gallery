@@ -9,7 +9,7 @@ function spg_add_api_route() {
 	global $wp;
 	$wp->add_query_var('spg_rest_route');
 
-	add_rewrite_rule('^'.SPG_Api_RestServer::API_NAMESPACE.'(.*)?','index.php?spg_rest_route=$matches[1]','top' );		
+	add_rewrite_rule('^'.SPG_Api_RestServer::API_NAMESPACE.'(.*)?','index.php?spg_rest_route=$matches[1]','top' );
 	flush_rewrite_rules();
 }
 add_action('init', 'spg_add_api_route');

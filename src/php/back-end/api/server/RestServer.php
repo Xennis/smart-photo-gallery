@@ -6,7 +6,7 @@ class SPG_Api_RestServer {
 	const HTTP_STATUS_200_OK = 200;
 	const HTTP_STATUS_201_CREATED = 201;
 	const HTTP_STATUS_202_ACCEPTED = 202;
-	const HTTP_STATUS_204_NO_CONTENT = 204;	
+	const HTTP_STATUS_204_NO_CONTENT = 204;
 	const HTTP_STATUS_400_BAD_REQUEST = 400;
 	const HTTP_STATUS_403_FORBIDDEN = 403;
 	const HTTP_STATUS_404_NOT_FOUND = 404;
@@ -15,7 +15,7 @@ class SPG_Api_RestServer {
 	const HEADER_CONTENT_TYPE = 'Content-Type';
 	const HEADER_X_TOTAL_COUNT = 'X-Total-Count';
 	// Response header parameter values
-	const HEADER_CONTENT_TYPE_JSON = 'application/json';	
+	const HEADER_CONTENT_TYPE_JSON = 'application/json';
 	
 	const API_NAMESPACE = 'smart-gallery/api/';
 	

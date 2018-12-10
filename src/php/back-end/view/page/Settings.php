@@ -10,8 +10,6 @@ class View_Page_Settings {
 			$$this->tab = $_GET['tab'];
 		}
 		$this->page = '?page='.$_GET['page'];
-
-
 	}
 	
 	public function display() {
@@ -29,8 +27,8 @@ class View_Page_Settings {
 				break;
 		}
 		?>
-	</div>	
-	<?php		
+	</div>
+	<?php
 	}
 	
 	private function tabGeneral() {
