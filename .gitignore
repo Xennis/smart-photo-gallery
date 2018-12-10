@@ -3,10 +3,9 @@
 ###########
 
 dist/
-composer.lock
-package-lock.json
 
-# Bower, Node and Composer directories
-bower_components/
+# Node and Composer
 node_modules/
+package-lock.json
 vendor/
+composer.lock

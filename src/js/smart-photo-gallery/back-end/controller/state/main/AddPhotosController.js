@@ -1,5 +1,5 @@
 function AddPhotosController($scope, $state, Restangular, $http) {
-	var Dropzone = require('../../../../../bower_components/dropzone/dist/min/dropzone.min');
+	var Dropzone = require('../../../../../../../node_modules/dropzone/dist/min/dropzone.min');
 	Dropzone.autoDiscover = false;
 	
 	var dropzone = new Dropzone('#dropzone', {

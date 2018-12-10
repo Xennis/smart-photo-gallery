@@ -12,7 +12,6 @@ Install the dependencies
 ```sh
 composer install
 npm install
-./node_modules/bower/bin/bower install
 ```
 
 Watch changes

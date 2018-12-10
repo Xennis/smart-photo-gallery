@@ -1,5 +1,5 @@
 require('../common/CommonModule');
-require('angular-bootstrap');
+require('angular-ui-bootstrap');
 
 angular.module('smart-photo-gallery.front-end', ['smart-photo-gallery.common', 'ui.bootstrap'])
 	
